@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import ReviewPage from "./components/ReviewPage/ReviewPage";
-import AdminPage from "./components/AdminPage/AdminPage";
-import LandingPage from "./components/LandingPage/LandingPage";
+import ReviewPage from "./components/ReviewPage";
+import AdminPage from "./components/AdminPage";
+import LandingPage from "./components/LandingPage";
 
 const App = () => {
   const [currentView, setCurrentView] = useState("LandingPage");
