@@ -65,8 +65,8 @@ export default function LandingPage() {
           <div className="max-w-xl text-lg">
             <p>
               {" "}
-              Engage your customers to leave authentic and honest testimonials
-              for your website, ads, and social channels.
+              Engage customers in leaving authentic and honest testimonials
+              to be used on your website, ads, and social channels.
             </p>
           </div>
           <div className="flex w-flex-row gap-4 items-center">
