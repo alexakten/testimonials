@@ -48,5 +48,23 @@ app.get("/reviews", (req, res) => {
     .catch((error) => console.error(error));
 });
 
+app.post("/submit-email", (req, res) => {
+  const emailsCollection = db.collection("emails");
+  emailsCollection
+    .insertOne(req.body)
+    .then((result) => {
+      res.json({
+        message: "Email submitted successfully",
+        id: result.insertedId,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while submitting the email" });
+    });
+});
+
 // Start the Express server
 app.listen(port);

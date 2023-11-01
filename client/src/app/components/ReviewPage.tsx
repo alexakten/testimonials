@@ -183,16 +183,16 @@ export default function ReviewPage() {
   //#endregion
 
   return (
-    <main className="flex relative flex-col xs:px-8 px-4 justify-center items-center bg-zinc-50 w-screen h-screen">
+    <main className="flex  flex-col xs:px-8 px-4 justify-center items-center bg-zinc-50 w-screen h-screen">
       {currentQuestion === 0 && (
         <div className="flex flex-col gap-8 items-center text-center max-w-lg">
           <div className="flex items-center flex-col gap-4">
             <h1 className="font-semibold text-3xl xs:text-5xl  text-black">
-              Lämna en recension och få 10% rabatt!👋
+              Hi there! We&apos;d love to hear your thoughts!👋
             </h1>
-            <div className="max-w-xs">
+            <div className="max-w-sm">
               <p className="text-zinc-500">
-                Kindred Lab vill höra vad du tyckte om din senaste upplevelse.
+                If you enjoyed working with us, leave a quick testimonial! It really helps us out. 
               </p>
             </div>
           </div>
@@ -202,13 +202,13 @@ export default function ReviewPage() {
               className="flex items-center justify-center w-56 h-14 rounded-lg text-white font-medium bg-purple"
               onClick={() => setCurrentQuestion(1)}
             >
-              Lämna recension
+              Leave testimonial
             </button>
             <p className="absolute bottom-12 text-black">
-              Hur används min recension?{" "}
+              How is my testimonial used?{" "}
               <span>
                 <button type="button" className="font-semibold underline">
-                  Läs mer.
+                  Read more.
                 </button>
               </span>
             </p>
@@ -218,20 +218,20 @@ export default function ReviewPage() {
 
       {currentQuestion === 1 && (
         <div className="flex flex-col gap-8 w-full max-w-lg">
-          <p className="text-zinc-500">Steg {currentQuestion} av 5</p>
+          <p className="text-zinc-500">Step {currentQuestion} of 5</p>
           <div className="flex items-start flex-col gap-4">
             <h2 className="font-semibold text-3xl text-black">
-              Hej där, ehm...
+              Hey there, uhm...
             </h2>
             <div>
-              <p className="text-zinc-500">Vad heter du?</p>
+              <p className="text-zinc-500">What&apos;s your name?</p>
             </div>
           </div>
           <div className="flex flex-col gap-8 items-end">
             <input
               type="text"
               className="p-4 w-full border text-black outline-none border-zinc-200 rounded-md"
-              placeholder="Namn"
+              placeholder="Name"
               value={name} // Setting the value of the input to be the name state variable
               onChange={(e) => setName(e.target.value)} //
             />
@@ -242,14 +242,14 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-white font-medium bg-purple"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
-                Nästa
+                Next
               </button>
             </div>
           </div>
@@ -258,14 +258,14 @@ export default function ReviewPage() {
 
       {currentQuestion === 2 && (
         <div className="flex flex-col gap-8 w-full max-w-lg">
-          <p className="text-zinc-500">Steg {currentQuestion} av 5</p>
+          <p className="text-zinc-500">Step {currentQuestion} of 5</p>
           <div className="flex items-start flex-col gap-4">
             <h2 className="font-semibold text-3xl text-black">
-              Blinka lilla stjärna...
+              Twinkle twinkle...
             </h2>
             <div>
               <p className="text-zinc-500">
-                Hur många stjärnor skulle du ge vårt samarbete?
+                What would you rate your experience?
               </p>
             </div>
           </div>
@@ -280,14 +280,14 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-white font-medium bg-purple"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
-                Nästa
+                Next
               </button>
             </div>
           </div>
@@ -296,14 +296,14 @@ export default function ReviewPage() {
 
       {currentQuestion === 3 && (
         <div className="flex flex-col gap-8 w-full max-w-lg">
-          <p className="text-zinc-500">Steg {currentQuestion} av 5</p>
+          <p className="text-zinc-500">Step {currentQuestion} of 5</p>
           <div className="flex items-start flex-col gap-4">
             <h2 className="font-semibold text-3xl text-black">
-              Lite kärlek! 🧡
+              Some love! 🧡
             </h2>
             <div>
               <p className="text-zinc-500">
-                Berätta vad du gillade med att jobba med oss!
+                Tell us more about your experience!
               </p>
             </div>
           </div>
@@ -311,7 +311,7 @@ export default function ReviewPage() {
             <input
               type="text"
               className="p-4 w-full border text-black outline-none border-zinc-200 rounded-md"
-              placeholder="Jag gillade..."
+              placeholder="..."
               value={review} // Setting the value of the input to be the review state variable
               onChange={(e) => setReview(e.target.value)} //
             />
@@ -322,14 +322,14 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-white font-medium bg-purple"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
-                Nästa
+                Next
               </button>
             </div>
           </div>
@@ -338,16 +338,16 @@ export default function ReviewPage() {
 
       {currentQuestion === 4 && (
         <div className="flex flex-col gap-8 w-full max-w-lg">
-          <p className="text-zinc-500">Steg {currentQuestion} av 5</p>
+          <p className="text-zinc-500">Step {currentQuestion} of 5</p>
           <div className="flex items-start flex-col gap-4">
             <h2 className="font-semibold text-3xl text-black">
-              Spela in en kort video!
+              Record a short video!
             </h2>
             <div>
               <p className="text-zinc-500">
-                Visa gärna produkten och filma i en{" "}
-                <span className="font-semibold underline">ljus miljö</span> vid
-                en lampa eller fönster ☀️
+                Remember to record in a {" "}
+                <span className="font-semibold underline">bright environment</span> by
+                a window or lamp ☀️
               </p>
             </div>
           </div>
@@ -358,14 +358,14 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-white font-medium bg-purple"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
-                Nästa
+                Next
               </button>
             </div>
           </div>
@@ -376,7 +376,7 @@ export default function ReviewPage() {
                 className="font-semibold underline"
                 onClick={() => setCurrentQuestion(6)}
               >
-                Hoppa över video
+                Skip video
               </button>
             </p>
           </div>
@@ -411,7 +411,7 @@ export default function ReviewPage() {
                   className="w-32 h-14 rounded-lg text-black bg-zinc-200 focus:outline-none"
                   onClick={startOverRecording}
                 >
-                  Börja om
+                  Start over
                 </button>
               ) : (
                 <button
@@ -437,14 +437,14 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-white font-medium bg-purple"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
-                Nästa
+                Next
               </button>
             </div>
           </div>
@@ -488,7 +488,7 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
               <button
                 type="button"
@@ -498,7 +498,7 @@ export default function ReviewPage() {
                   setCurrentQuestion(currentQuestion + 1);
                 }}
               >
-                Skicka in
+                Submit
               </button>
             </div>
           </div>
@@ -509,11 +509,11 @@ export default function ReviewPage() {
         <div className="flex flex-col gap-8 w-full max-w-lg">
           <div className="flex items-center flex-col gap-4">
             <h2 className="font-semibold text-3xl text-black">
-              Allt är klart! Tack! 🧡
+              All done! Thank you! 🧡
             </h2>
             <div>
               <p className="text-zinc-500">
-                Vi ser fram emot att höra från dig igen!
+                Keep an eye out for your testimonial on our website!
               </p>
             </div>
           </div>
@@ -524,7 +524,7 @@ export default function ReviewPage() {
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
-                Föregående
+                Previous
               </button>
             </div>
           </div>

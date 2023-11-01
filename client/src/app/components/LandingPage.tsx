@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import axios from 'axios';
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
@@ -21,8 +22,16 @@ export default function LandingPage() {
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
   const handleButtonClick = () => {
-    setButtonText("Submitted!"); // Update the button text state
-    // ... your other code for the click event ...
+    setButtonText("Submitting..."); // Update the button text state
+    
+    axios.post('http://localhost:3003/submit-email', { email })
+      .then(response => {
+        setButtonText("Submitted!"); // Update the button text state upon successful submission
+      })
+      .catch(error => {
+        setButtonText("Failed to submit. Try again."); // Update the button text state upon failure
+        console.error("There was an error submitting the email!", error);
+      });
   };
 
   return (
