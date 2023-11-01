@@ -14,6 +14,7 @@ client/node_modules/
 /coverage
 
 # next.js
+client/.next/
 **/.next/
 **/out/
 
