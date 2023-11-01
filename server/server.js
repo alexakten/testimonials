@@ -39,10 +39,11 @@ app.post("/submit-review", (req, res) => {
     });
 });
 
-app.get("/reviews", (req, res) => {
+app.get("/user-reviews/:userId", (req, res) => {
+  const userId = req.params.userId;
   const reviewsCollection = db.collection("reviews");
   reviewsCollection
-    .find()
+    .find({ userId }) // find reviews that match the userId
     .toArray()
     .then((results) => res.json(results))
     .catch((error) => console.error(error));

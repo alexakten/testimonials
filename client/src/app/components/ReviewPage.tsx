@@ -1,8 +1,11 @@
-"use client";
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from 'react-router-dom';
+
+import { auth } from './firebaseConfig';
 
 export default function ReviewPage() {
   //#region
+  const { userId } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [name, setName] = useState("");
@@ -155,8 +158,11 @@ export default function ReviewPage() {
     };
   }, [currentQuestion]);
 
+
+
   const handleSubmitReview = () => {
     const reviewData = {
+      userId,
       videoUrl, // assuming videoUrl is stored in a state or it’s accessible in your function
       stars: selectedStar + 1, // replace with your actual star rating
       name,

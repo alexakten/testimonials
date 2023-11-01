@@ -1,9 +1,9 @@
 "use client";
-
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import ReviewPage from "./components/ReviewPage";
-import AdminPage from "./components/AdminPage";
+import DashboardPage from "./components/DashboardPage";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
@@ -56,8 +56,8 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/review" element={<ReviewPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/review/:userId" element={<ReviewPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           {/* For unknown paths, it'll show LandingPage */}
           <Route path="*" element={<LandingPage />} />
         </Routes>
