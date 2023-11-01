@@ -1,17 +1,38 @@
 import React, { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDfQc1iJ3QSR5CHr2Y64ffwOOFwa5wqJzE",
+  authDomain: "testimonials-c3d77.firebaseapp.com",
+  projectId: "testimonials-c3d77",
+  storageBucket: "testimonials-c3d77.appspot.com",
+  messagingSenderId: "125518248646",
+  appId: "1:125518248646:web:185228f5893e6a599775c7",
+  measurementId: "G-W28TNP1784"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const auth = getAuth();
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (email && password) {
-      alert(`Logged in with Email: ${email}`);
-      // Here you can add logic to handle the login authentication
-    } else {
-      alert("Please fill in both fields.");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Logged in successfully');
+      // You might want to redirect the user to another page here
+    } catch (error: any) {
+      alert(error.message); // Display error message to user
     }
   };
 
@@ -25,7 +46,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -78,7 +99,7 @@ export default function LoginPage() {
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
             <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
+              Sign up.
             </a>
           </p>
         </div>
