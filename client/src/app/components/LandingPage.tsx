@@ -20,7 +20,7 @@ export default function LandingPage() {
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
   const handleButtonClick = () => {
-    setButtonText("Submitting..."); // Update the button text state
+    setButtonText("Submitting"); // Update the button text state
     
     axios.post('http://localhost:3003/submit-email', { email })
       .then(response => {
