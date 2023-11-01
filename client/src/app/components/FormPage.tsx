@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import { auth } from './firebaseConfig';
+import { auth } from "./firebaseConfig";
 
-export default function ReviewPage() {
+export default function FormPage() {
   //#region
   const { userId } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -158,8 +158,6 @@ export default function ReviewPage() {
     };
   }, [currentQuestion]);
 
-
-
   const handleSubmitReview = () => {
     const reviewData = {
       userId,
@@ -198,7 +196,8 @@ export default function ReviewPage() {
             </h1>
             <div className="max-w-sm">
               <p className="text-zinc-500">
-                If you enjoyed working with us, leave a quick testimonial! It really helps us out. 
+                If you enjoyed working with us, leave a quick testimonial! It
+                really helps us out.
               </p>
             </div>
           </div>
@@ -304,9 +303,7 @@ export default function ReviewPage() {
         <div className="flex flex-col gap-8 w-full max-w-lg">
           <p className="text-zinc-500">Step {currentQuestion} of 5</p>
           <div className="flex items-start flex-col gap-4">
-            <h2 className="font-semibold text-3xl text-black">
-              Some love! 🧡
-            </h2>
+            <h2 className="font-semibold text-3xl text-black">Some love! 🧡</h2>
             <div>
               <p className="text-zinc-500">
                 Tell us more about your experience!
@@ -351,9 +348,11 @@ export default function ReviewPage() {
             </h2>
             <div>
               <p className="text-zinc-500">
-                Remember to record in a {" "}
-                <span className="font-semibold underline">bright environment</span> by
-                a window or lamp ☀️
+                Remember to record in a{" "}
+                <span className="font-semibold underline">
+                  bright environment
+                </span>{" "}
+                by a window or lamp ☀️
               </p>
             </div>
           </div>

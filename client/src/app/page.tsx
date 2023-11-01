@@ -2,7 +2,7 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import ReviewPage from "./components/ReviewPage";
+import FormPage from "./components/FormPage";
 import DashboardPage from "./components/DashboardPage";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <main className="">
-        <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-8 top-8">
+        <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
           <Link to="/">
             <svg
               width="166"
@@ -38,7 +38,7 @@ const App = () => {
           </Link>
           <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
             <Link
-              to="/review"
+              to="/form"
               className="flex items-center justify-center z-10 rounded-full px-4 h-10"
             >
               Demo
@@ -56,7 +56,7 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/review/:userId" element={<ReviewPage />} />
+          <Route path="/form/" element={<FormPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           {/* For unknown paths, it'll show LandingPage */}
           <Route path="*" element={<LandingPage />} />

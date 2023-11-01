@@ -16,6 +16,18 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const userId = auth.currentUser?.uid;
 
+  const [currentView, setCurrentView] = useState("dashboard");
+
+  const createReviewForm = () => {
+  
+    const userId = "yourUserId"; // Replace this with the actual userId
+    const reviewPageUrl = `/review/${userId}`; // Generating a unique URL with the userId
+    
+    // You might want to save this URL to your database, or perform other actions
+    
+    console.log("ReviewPage URL:", reviewPageUrl); // For testing purposes
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:3003/reviews")
@@ -75,35 +87,94 @@ export default function AdminPage() {
   }, []);
 
   return (
-    <main className="flex relative flex-col xs:px-8 px-4 justify-center items-center bg-zinc-50 w-screen">
-      <h1>Admin Page</h1>
-      {loading && <p>Loading reviews...</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {!loading &&
-          reviews.map((review, index) => (
-            <div
-              key={index}
-              className="flex p-8 rounded-md bg-zinc-100 items-start flex-col gap-4"
-            >
-              {review.videoUrl !== "null" ? ( // Check if the video URL is not "null"
-                <video
-                  src={review.videoUrl}
-                  controls
-                  className="w-full rounded-lg object-cover"
-                ></video>
-              ) : (
-                <div className="w-full bg-purple-500 rounded-lg"></div> // Display purple div if video URL is "null"
-              )}
-              <p className="font-semibold text-xl text-black">{review.name}</p>
-              <div className="flex flex-row gap-2">
-                {renderStars(review.stars)}
-              </div>
-              <div>
-                <p className="text-zinc-500">&quot;{review.review}&quot;</p>
-              </div>
-            </div>
-          ))}
+    <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
+      <div className="flex flex-col justify-between h-screen border px-4 py-24 w-80 border-zinc-300">
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={() => setCurrentView("dashboard")}
+            className="w-full px-2 py-3 rounded-lg text-black font-medium text-left hover:bg-zinc-100 hover:text-purple"
+          >
+            Dashboard
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentView("responses")}
+            className="w-full px-2 py-3 rounded-lg text-black font-medium text-left hover:bg-zinc-100 hover:text-purple"
+          >
+            Responses
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentView("forms")}
+            className="w-full px-2 py-3 rounded-lg text-black font-medium text-left hover:bg-zinc-100 hover:text-purple"
+          >
+            Forms
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={() => setCurrentView("settings")}
+          className="w-full px-2 py-3 rounded-lg text-black font-medium text-left hover:bg-zinc-100 hover:text-purple"
+        >
+          Settings
+        </button>
       </div>
+
+      {currentView === "dashboard" && (
+        <div className="w-full h-full flex items-center justify-center text-black">
+          Dashboard View
+        </div>
+      )}
+
+      {currentView === "responses" && (
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {!loading &&
+            reviews.map((review, index) => (
+              <div
+                key={index}
+                className="flex p-8 rounded-md bg-zinc-100 items-start flex-col gap-4"
+              >
+                {review.videoUrl !== "null" ? ( // Check if the video URL is not "null"
+                  <video
+                    src={review.videoUrl}
+                    controls
+                    className="w-full rounded-lg object-cover"
+                  ></video>
+                ) : (
+                  <div className="w-full bg-purple-500 rounded-lg"></div> // Display purple div if video URL is "null"
+                )}
+                <p className="font-semibold text-xl text-black">
+                  {review.name}
+                </p>
+                <div className="flex flex-row gap-2">
+                  {renderStars(review.stars)}
+                </div>
+                <div>
+                  <p className="text-zinc-500">&quot;{review.review}&quot;</p>
+                </div>
+              </div>
+            ))}
+        </div>
+      )}
+
+      {currentView === "forms" && (
+        <div className="w-full h-full flex flex-col items-center justify-center text-black">
+          <h2 className="text-2xl mb-4">Create a new Review Form</h2>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={createReviewForm} // function to handle creating a unique ReviewPage
+          >
+            Generate Review Form
+          </button>
+        </div>
+      )}
+
+      {currentView === "settings" && (
+        <div className="w-full h-full flex items-center justify-center text-black">
+          Settings View
+        </div>
+      )}
     </main>
   );
 }
