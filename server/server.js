@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const MongoClient = require("mongodb").MongoClient;
 const cors = require("cors");
+const path = require('path');
 
 const express = require("express");
 const app = express();
