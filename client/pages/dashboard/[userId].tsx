@@ -32,19 +32,23 @@ export default function AdminPage() {
       return "https://testimonials-one-chi.vercel.app";
     }
   };
-  
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3003/all-reviews`)
-      .then((response) => {
-        setReviews(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the reviews!", error);
-        setLoading(false);
-      });
-  }, []);
+    if (userId) {
+      // Make sure userId is not undefined
+      axios
+        .get(`http://localhost:3003/user-reviews/${userId}`)
+
+        .then((response) => {
+          setReviews(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching the reviews!", error);
+          setLoading(false);
+        });
+    }
+  }, [userId]);
 
   function renderStars(stars: number, size = "20") {
     return Array(5)
@@ -77,7 +81,7 @@ export default function AdminPage() {
 
   return (
     <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
-      <div className="flex flex-col justify-between h-screen border px-4 py-24 w-80 border-zinc-300">
+      <div className="flex fixed top-0 left-0 flex-col justify-between h-screen border px-4 py-24 w-80 border-zinc-300">
         <div className="flex flex-col gap-2">
           <button
             type="button"
@@ -86,7 +90,7 @@ export default function AdminPage() {
               currentView === "dashboard" ? "bg-zinc-100 text-purple" : ""
             } hover:bg-zinc-100 hover:text-purple`}
           >
-            Dashboard
+            Test
           </button>
           <button
             type="button"
@@ -118,8 +122,9 @@ export default function AdminPage() {
         </button>
       </div>
 
+      <div className="w-full h-full flex overflow-y-auto p-8 ml-80">
       {currentView === "dashboard" && (
-        <div className="w-full h-full flex items-center justify-center text-black">
+        <div className="flex items-center justify-center text-black">
           Dashboard View
         </div>
       )}
@@ -136,7 +141,7 @@ export default function AdminPage() {
             reviews.map((review, index) => (
               <div
                 key={index}
-                className="flex p-8 rounded-md bg-zinc-100 items-start flex-col gap-4"
+                className="flex p-8 rounded-md bg-zinc-100 justify-between items-start flex-col gap-4"
               >
                 {review.videoUrl && review.videoUrl !== "null" ? ( // Check if a valid video URL is available
                   <video
@@ -150,6 +155,7 @@ export default function AdminPage() {
                     {/* Message when no video is available */}
                   </div>
                 )}
+                <div className="flex flex-col gap-2">
                 <p className="font-semibold text-xl text-black">
                   {review.name || "Anonymous"}{" "}
                   {/* Default to "Anonymous" if no name is available */}
@@ -164,6 +170,7 @@ export default function AdminPage() {
                   </p>
                   {/* Default text when no review text is available */}
                 </div>
+                </div>
               </div>
             ))}
         </div>
@@ -171,7 +178,6 @@ export default function AdminPage() {
 
       {currentView === "forms" && (
         <div className="w-full h-full flex flex-col gap- 8 items-center justify-center text-black space-y-4">
-
           <p className="text-2xl font-medium text-black">
             Share this link with your customers:
           </p>
@@ -195,6 +201,7 @@ export default function AdminPage() {
           Settings View
         </div>
       )}
+      </div>
     </main>
   );
 }
