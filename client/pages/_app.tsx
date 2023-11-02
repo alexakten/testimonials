@@ -1,41 +1,14 @@
-import React from 'react';
-// import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
-
-export default MyApp;
+import React from "react";
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import Link from 'next/link';
 
 
-
-// "use client";
-// import React from "react";
-// import dynamic from "next/dynamic";
-// import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-// // import FormPage from "../../pages/FormPage";
-// // import DashboardPage from "../../pages/DashboardPage";
-// // import LandingPage from "../../pages/LandingPage";
-// // import LoginPage from "../../pages/LoginPage";
-// // import SignUpPage from "../../pages/SignUpPage";
-
-// const RouterWrapper = dynamic(() => import("./RouterWrapper"), {
-//   ssr: false,
-//   // loading: () => <p className="flex bg-zinc-50 h-screen w-screen items-center justify-center">Loading...</p>,
-// });
-
-// const App = () => {
-//   return (
-//     <main></main>
-//   );
-// };
-
-// export default App;
-
-{/* <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
-        <Link to="/">
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <main>
+      <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+        <Link href="/">
           <svg
             width="166"
             height="27"
@@ -59,17 +32,18 @@ export default MyApp;
           </svg>
         </Link>
         <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
-          {/* <Link
-              to="/form"
-              className="flex items-center justify-center z-10 rounded-full px-4 h-10"
-            >
-              Demo
-            </Link> */}
-      //     <Link
-      //       to="/login"
-      //       className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
-      //     >
-      //       Log in
-      //     </Link>
-      //   </div>
-      // </nav> */}
+          <Link
+            href="/login"
+            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
+          >
+            Log in
+          </Link>
+        </div>
+      </nav>
+      ;
+      <Component {...pageProps} />
+    </main>
+  );
+}
+
+export default App;
