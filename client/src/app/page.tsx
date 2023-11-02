@@ -37,12 +37,12 @@ const App = () => {
             </svg>
           </Link>
           <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
-            <Link
+            {/* <Link
               to="/form"
               className="flex items-center justify-center z-10 rounded-full px-4 h-10"
             >
               Demo
-            </Link>
+            </Link> */}
             <Link
               to="/login"
               className="flex items-center justify-center z-10 bg-black text-white rounded-full px-6 h-10"
