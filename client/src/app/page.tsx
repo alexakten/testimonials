@@ -56,8 +56,8 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/form/" element={<FormPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/form/:userId" element={<FormPage />} />
+          <Route path="/dashboard/:userId" element={<DashboardPage />} />
           {/* For unknown paths, it'll show LandingPage */}
           <Route path="*" element={<LandingPage />} />
         </Routes>

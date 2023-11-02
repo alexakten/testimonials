@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
-import { auth } from './firebaseConfig';
+import { auth } from "./firebaseConfig";
 
 export default function LoginPage() {
-
   const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,9 +13,14 @@ export default function LoginPage() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const userId = userCredential.user.uid; // Retrieve userId from user credentials
 
-      navigate("/dashboard"); // Redirect to the dashboard page
+      navigate(`/dashboard/${userId}`); // Redirect to the dashboard page
     } catch (error: any) {
       alert(error.message); // Display error message to user
     }
