@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "./firebaseConfig";
-import FormPage from "./FormPage";
+import FormPage from "./form";
 
 type Review = {
   userId: string;
@@ -26,9 +26,19 @@ export default function AdminPage() {
     // You might want to save this URL to your database, or perform other actions
   };
 
+  const getBaseUrl = () => {
+    if (window.location.hostname === "localhost") {
+      return "http://localhost:3003";
+    } else {
+      return "https://testimonials-one-chi.vercel.app";
+    }
+  };
+  
   useEffect(() => {
+    const baseUrl = getBaseUrl();
+    
     axios
-      .get(`http://localhost:3003/user-reviews/${userId}`)
+      .get(`${baseUrl}/user-reviews/${userId}`)
       .then((response) => {
         setReviews(response.data);
         setLoading(false);
@@ -175,19 +185,9 @@ export default function AdminPage() {
                 type="text"
                 aria-label="form"
                 readOnly
-                value={`http://localhost:3000/#/form/${userId}`} // Assuming that your form page is hosted on this URL and port
+                value={`http://localhost:3000/form/${userId}`} // Assuming that your form page is hosted on this URL and port
                 className="border p-2 rounded w-80"
               />
-              <button
-                onClick={() =>
-                  navigator.clipboard.writeText(
-                    `http://localhost:3000/#/form/${userId}`
-                  )
-                }
-                className="px-2 py-1 bg-gray-300 rounded text-black"
-              >
-                Copy
-              </button>
             </div>
           )}
         </div>

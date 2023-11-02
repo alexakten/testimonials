@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useRouter } from 'next/router';
 
 import { auth } from "./firebaseConfig";
 
 export default function FormPage() {
   //#region
-  const { userId } = useParams();
+  const router = useRouter();
+  const { userId } = router.query;
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [name, setName] = useState("");

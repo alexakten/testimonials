@@ -57,7 +57,7 @@ export default function LandingPage() {
           <div className="flex w-flex-row gap-4 items-center">
             <input
               type="text"
-              className="px-4 py-3 w-80 border text-black outline-none border-zinc-200 focus:border-purple rounded-full"
+              className="px-4 h-12 w-80 border text-black outline-none border-zinc-200 focus:border-purple rounded-full"
               placeholder="Email"
               ref={emailRef}
               value={email}
@@ -65,7 +65,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="flex items-center justify-center z-10 rounded-full text-white bg-purple px-4 py-3"
+              className="flex items-center justify-center z-10 rounded-full text-white font-medium bg-purple px-4 h-12"
               onClick={handleButtonClick}
             >
               {buttonText}
