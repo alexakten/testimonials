@@ -11,13 +11,12 @@ import SignUpPage from "./components/SignUpPage";
 
 const RouterWrapper = dynamic(() => import("./components/RouterWrapper"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  // loading: () => <p className="flex bg-zinc-50 h-screen w-screen items-center justify-center">Loading...</p>,
 });
 
 const App = () => {
   return (
     <RouterWrapper>
-      <Router>
         <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
           <Link to="/">
             <svg
@@ -67,7 +66,6 @@ const App = () => {
           {/* For unknown paths, it'll show LandingPage */}
           <Route path="*" element={<LandingPage />} />
         </Routes>
-      </Router>
     </RouterWrapper>
   );
 };
