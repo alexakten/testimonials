@@ -8,14 +8,14 @@ const express = require("express");
 const app = express();
 const port = 3003; // You can choose another port if you want
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
 app.use(cors()); // Enabling CORS for all routes
 app.use(express.json()); // Parse incoming request bodies as JSON
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 const uri = process.env.MONGODB_URI;
 
 let db; // Variable to hold the database instance
@@ -54,6 +54,22 @@ app.get("/user-reviews/:userId", (req, res) => {
     .then((results) => res.json(results))
     .catch((error) => console.error(error));
 });
+
+
+useEffect(() => {
+  axios
+    .get(`http://localhost:3003/all-reviews`)
+    .then((response) => {
+      setReviews(response.data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("There was an error fetching the reviews!", error);
+      setLoading(false);
+    });
+}, []);
+
+
 
 app.post("/submit-email", (req, res) => {
   const emailsCollection = db.collection("emails");

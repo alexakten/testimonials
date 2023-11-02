@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from 'next/router';
 
-import { auth } from "./firebaseConfig";
+import { auth } from "../config/firebaseConfig";
 
 export default function FormPage() {
   //#region

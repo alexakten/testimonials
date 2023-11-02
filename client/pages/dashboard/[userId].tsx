@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { auth } from "../config/firebaseConfig";
-import FormPage from "./form";
+import { auth } from "../../config/firebaseConfig";
 
 type Review = {
   userId: string;
@@ -35,10 +34,8 @@ export default function AdminPage() {
   };
   
   useEffect(() => {
-    const baseUrl = getBaseUrl();
-    
     axios
-      .get(`${baseUrl}/user-reviews/${userId}`)
+      .get(`http://localhost:3003/all-reviews`)
       .then((response) => {
         setReviews(response.data);
         setLoading(false);
@@ -47,7 +44,7 @@ export default function AdminPage() {
         console.error("There was an error fetching the reviews!", error);
         setLoading(false);
       });
-  }, [userId]);
+  }, []);
 
   function renderStars(stars: number, size = "20") {
     return Array(5)

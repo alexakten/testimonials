@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 
-import { auth } from "./firebaseConfig";
+import { auth } from "../config/firebaseConfig";
 
 export default function LoginPage() {
-  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
