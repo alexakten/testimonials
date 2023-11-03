@@ -141,9 +141,10 @@ export default function AdminPage() {
               </p>
               {!loading && reviews.length > 0 ? (
                 <div className="flex flex-col gap-4">
-                  {reviews[0].videoUrl && reviews[0].videoUrl !== "null" ? (
+                  {reviews[reviews.length - 1].videoUrl &&
+                  reviews[reviews.length - 1].videoUrl !== "null" ? (
                     <video
-                      src={reviews[0].videoUrl}
+                      src={reviews[reviews.length - 1].videoUrl}
                       controls
                       className="w-full rounded-lg object-cover"
                     ></video>
@@ -153,13 +154,15 @@ export default function AdminPage() {
                     </div>
                   )}
                   <p className="font-semibold text-xl text-black">
-                    {reviews[0].name || "Anonymous"}
+                    {reviews[reviews.length - 1].name || "Anonymous"}
                   </p>
                   <div className="flex flex-row gap-2">
-                    {renderStars(reviews[0].stars || 0)}
+                    {renderStars(reviews[reviews.length - 1].stars || 0)}
                   </div>
                   <p className="text-zinc-500">
-                    &quot;{reviews[0].review || "No review text available."}
+                    &quot;
+                    {reviews[reviews.length - 1].review ||
+                      "No review text available."}
                     &quot;
                   </p>
                 </div>
@@ -196,7 +199,7 @@ export default function AdminPage() {
                       "40" // desired size; adjust as necessary
                     )}
 
-                    <p className="text-black ml-4 mt-1 text-3xl">
+                    <p className="text-black font-medium ml-4 mt-1 text-3xl">
                       {(
                         reviews.reduce(
                           (acc, review) => acc + (review.stars || 0),
@@ -211,8 +214,6 @@ export default function AdminPage() {
               </div>
             </div>
 
-            
-
             {/* 4. Blank div */}
             <div className="rounded-md bg-zinc-100 p-8"></div>
           </div>
@@ -220,7 +221,7 @@ export default function AdminPage() {
 
         {currentView === "responses" && (
           <div className="h-full w-full">
-            <div className="w-full text-black p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="w-full text-black p-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
               {loading && <p>Loading...</p>}{" "}
               {/* Display a loading message while fetching data */}
               {!loading && reviews.length === 0 && (

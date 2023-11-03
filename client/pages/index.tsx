@@ -54,7 +54,7 @@ export default function LandingPage() {
       <div className="flex items-center justify-center w-screen h-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border px-4 py-1 rounded-full text-zinc-400 border-zinc-200">
-            v1.0 launching soon.{" "}
+            Beta v1.0 launching soon.{" "}
             <span className="text-purple font-medium">
               <button onClick={handleJoinWaitlistClick}>Join waitlist →</button>
             </span>
@@ -89,6 +89,9 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      
     </main>
   );
 }
+
+
