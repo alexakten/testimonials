@@ -59,7 +59,7 @@ export default function LandingPage() {
               <button onClick={handleJoinWaitlistClick}>Join waitlist →</button>
             </span>
           </div>
-          <h1 className="text-4xl xs:text-6xl font-semibold">
+          <h1 className="text-4xl xs:text-6xl font-semibold" style={{lineHeight: 1.1}}>
             Fastest way to collect & publish{" "}
             <span className="text-purple">video testimonials.</span>
           </h1>
