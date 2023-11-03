@@ -4,6 +4,8 @@ import Link from "next/link";
 import Logo from "./../public/src/logo";
 
 export default function LandingPage() {
+  const [lang, setLang] = useState("en");
+
   const [email, setEmail] = useState("");
 
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -42,11 +44,27 @@ export default function LandingPage() {
           <Logo></Logo>
         </Link>
         <div className="flex flex-row text-black font-medium gap-4 ">
+          <button
+            type="button"
+            onClick={() => setLang("sv")}
+            className={lang === "sv" ? "font-bold" : ""}
+          >
+            Sv
+          </button>
+          <button
+            type="button"
+            onClick={() => setLang("en")}
+            className={lang === "en" ? "font-bold" : ""}
+          >
+            En
+          </button>
           <Link
             href="/login"
             className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
           >
-            Log in
+            {lang === "en"
+              ? "Log in"
+              : "Logga in"}
           </Link>
         </div>
       </nav>
@@ -54,20 +72,31 @@ export default function LandingPage() {
       <div className="flex items-center justify-center w-screen h-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border px-4 py-1 rounded-full text-zinc-400 border-zinc-200">
-            Beta v1.0 launching soon.{" "}
+            {lang === "en"
+              ? "Beta v1.0 launching soon. "
+              : "Beta v1.0 lanserar snart. "}
             <span className="text-purple font-medium">
-              <button onClick={handleJoinWaitlistClick}>Join waitlist →</button>
+              <button onClick={handleJoinWaitlistClick}>
+                {lang === "en" ? "Join waitlist →" : "Gå med i väntelistan → "}
+              </button>
             </span>
           </div>
-          <h1 className="text-4xl xs:text-6xl font-semibold" style={{lineHeight: 1.1}}>
-            Fastest way to collect & publish{" "}
-            <span className="text-purple">video testimonials.</span>
+          <h1
+            className="text-4xl xs:text-6xl font-semibold"
+            style={{ lineHeight: 1.1 }}
+          >
+            {lang === "en"
+              ? "Fastest way to collect & publish "
+              : "Samla och publicera kund-recensioner i "}
+            <span className="text-purple">
+              {lang === "en" ? "video testimonials." : "videoformat."}
+            </span>
           </h1>
           <div className="max-w-xl text-md xs:text-lg">
             <p>
-              {" "}
-              Engage customers in leaving authentic and honest testimonials to
-              be used on your website, ads, and social channels.
+              {lang === "en"
+                ? "Engage customers in leaving authentic and honest testimonials to be used on your website, ads, and social channels."
+                : "Engagera dina kunder i att lämna äkta och övertygande recensioner och använd dem på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
           <div className="flex flex-col xs:flex-row gap-4 items-center">
@@ -84,14 +113,25 @@ export default function LandingPage() {
               className="flex items-center justify-center z-10 rounded-full text-white font-medium bg-purple px-4 h-12"
               onClick={handleButtonClick}
             >
-              {buttonText}
+              {lang === "en"
+                ? buttonText === "Join waitlist"
+                  ? "Join waitlist"
+                  : buttonText === "Submitting"
+                  ? "Submitting"
+                  : buttonText === "Submitted!"
+                  ? "Submitted!"
+                  : "Failed."
+                : buttonText === "Join waitlist"
+                ? "Gå med"
+                : buttonText === "Submitting"
+                ? "Skickar"
+                : buttonText === "Submitted!"
+                ? "Inskickad!"
+                : "Misslyckades."}
             </button>
           </div>
         </div>
       </div>
-      
     </main>
   );
 }
-
-

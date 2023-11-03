@@ -76,11 +76,11 @@ export default function AdminPage() {
 
   return (
     <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
-      <nav className="flex w-full z-100 justify-center items-center fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-8">
         <Link href="/">
           <Logo></Logo>
         </Link>
-        <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
+        <div className="flex flex-row text-black font-medium gap-4">
           <Link
             href="/"
             className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
