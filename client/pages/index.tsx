@@ -36,7 +36,7 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="flex items-center justify-center bg-zinc-50">
+    <main className="flex px-4 items-center justify-center bg-zinc-50">
       <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
         <Link href="/">
           <Logo></Logo>
@@ -59,11 +59,11 @@ export default function LandingPage() {
               <button onClick={handleJoinWaitlistClick}>Join waitlist →</button>
             </span>
           </div>
-          <h1 className="text-3xl xs:text-6xl font-semibold">
+          <h1 className="text-4xl xs:text-6xl font-semibold">
             Fastest way to collect & publish{" "}
             <span className="text-purple">video testimonials.</span>
           </h1>
-          <div className="max-w-xl text-lg">
+          <div className="max-w-xl text-md xs:text-lg">
             <p>
               {" "}
               Engage customers in leaving authentic and honest testimonials to
