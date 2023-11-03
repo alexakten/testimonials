@@ -18,7 +18,7 @@ const Logo = () => {
         />
       </svg>
       <div className="font-medium text-2xl text-black">
-        <p className="tracking-tight">
+        <p style={{letterSpacing: -0.8}}>
           kindred<span className="text-purple">feel</span>
         </p>
       </div>
