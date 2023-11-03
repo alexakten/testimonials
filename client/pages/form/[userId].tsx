@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Logo from "../../public/src/logo";
-
+import { storage } from "../../config/firebaseConfig";
 import { auth } from "../../config/firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormPage() {
   //#region
@@ -72,15 +73,25 @@ export default function FormPage() {
           videoRef.current!.srcObject = stream;
           mediaRecorder.current = new MediaRecorder(stream);
 
+          mediaRecorder.current.ondataavailable = async (event) => {
+            if (event.data.size > 0) {
+              // This assumes that each video will have a unique name
+              // It uses the current timestamp as an example.
+              const videoName = `review_${Date.now()}.webm`;
+              const videoStorageRef = ref(storage, `videos/${videoName}`);
+
+              // Upload the recorded video to Firebase Cloud Storage
+              await uploadBytes(videoStorageRef, event.data);
+
+              // Get the download URL and set it to videoUrl
+              const downloadURL = await getDownloadURL(videoStorageRef);
+              setVideoUrl(downloadURL);
+            }
+          };
+
           mediaRecorder.current.onstop = () => {
             videoRef.current!.srcObject = null;
             stream.getTracks().forEach((track) => track.stop());
-          };
-
-          mediaRecorder.current.ondataavailable = (event) => {
-            if (event.data.size > 0) {
-              setVideoUrl(URL.createObjectURL(event.data));
-            }
           };
 
           mediaRecorder.current.start();
@@ -213,7 +224,7 @@ export default function FormPage() {
             </h1>
             <div className="max-w-sm">
               <p className="text-zinc-500">
-                If you enjoyed working with us, leave a quick testimonial! It
+                If you enjoyed working with us, leave a quick testimonial. It
                 really helps us out.
               </p>
             </div>
@@ -329,9 +340,10 @@ export default function FormPage() {
           </div>
           <div className="flex flex-col gap-8 items-end">
             <input
+              aria-label="review"
               type="text"
               className="p-4 w-full border text-black outline-none border-zinc-200 rounded-md"
-              placeholder="..."
+              placeholder=""
               value={review} // Setting the value of the input to be the review state variable
               onChange={(e) => setReview(e.target.value)} //
             />
