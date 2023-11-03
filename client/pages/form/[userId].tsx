@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Logo from "../../public/src/logo";
 
 import { auth } from "../../config/firebaseConfig";
 
@@ -189,6 +191,20 @@ export default function FormPage() {
 
   return (
     <main className="flex  flex-col xs:px-8 px-4 justify-center items-center bg-zinc-50 w-screen h-screen">
+      <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+        <Link href="/">
+          <Logo></Logo>
+        </Link>
+        <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
+          <Link
+            href="/login"
+            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
+          >
+            Log in
+          </Link>
+        </div>
+      </nav>
+
       {currentQuestion === 0 && (
         <div className="flex flex-col gap-8 items-center text-center max-w-lg">
           <div className="flex items-center flex-col gap-4">
@@ -525,13 +541,13 @@ export default function FormPage() {
           </div>
           <div className="flex flex-col gap-8 items-end">
             <div className="flex items-center flex-row gap-4">
-              <button
+              {/* <button
                 type="button"
                 className="flex items-center justify-center w-36 h-14 rounded-lg text-zinc-400 font-regular bg-white"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

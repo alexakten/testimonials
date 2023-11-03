@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "../../config/firebaseConfig";
 import Logo from "../../public/src/logo";
+import Link from "next/link";
 
 type Review = {
   userId: string;
@@ -76,8 +77,18 @@ export default function AdminPage() {
 
   return (
     <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
-      <nav className="fixed top-0 left-0 p-6">
-        <Logo></Logo>
+       <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+        <Link href="/">
+          <Logo></Logo>
+        </Link>
+        <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
+          <Link
+            href="/"
+            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
+          >
+            Log out
+          </Link>
+        </div>
       </nav>
 
       <div className="flex w-96 flex-col justify-between h-screen border px-4 py-24 border-zinc-300">

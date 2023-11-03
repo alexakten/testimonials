@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Logo from "./../public/src/logo";
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -47,7 +48,20 @@ export default function SignUpPage() {
 
   return (
     <main className="flex items-center justify-center bg-zinc-50 h-screen">
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+       <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+        <Link href="/">
+          <Logo></Logo>
+        </Link>
+        {/* <div className="flex flex-row text-black font-medium gap-4 fixed top-8 right-8">
+          <Link
+            href="/login"
+            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
+          >
+            Log in
+          </Link>
+        </div> */}
+      </nav>
+      <div className="flex h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="text-center text-2xl font-semibold leading-9 text-black">
             Create account
@@ -73,7 +87,6 @@ export default function SignUpPage() {
                   id="email"
                   name="email"
                   type="email"
-                  autoComplete="email"
                   required
                   onChange={(e) => setEmail(e.target.value)} // Capture input
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -95,7 +108,6 @@ export default function SignUpPage() {
                   id="password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
                   required
                   onChange={(e) => setPassword(e.target.value)} // Capture input
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -115,7 +127,6 @@ export default function SignUpPage() {
                   id="confirmPassword"
                   name="confirmPassword"
                   type="password"
-                  autoComplete="new-password"
                   required
                   onChange={(e) => setConfirmPassword(e.target.value)} // Capture input
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
