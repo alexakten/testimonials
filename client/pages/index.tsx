@@ -70,7 +70,7 @@ export default function LandingPage() {
               be used on your website, ads, and social channels.
             </p>
           </div>
-          <div className="flex w-flex-row gap-4 items-center">
+          <div className="flex flex-col xs:flex-row gap-4 items-center">
             <input
               type="text"
               className="px-4 h-12 w-80 border text-black outline-none border-zinc-200 focus:border-purple rounded-full"
