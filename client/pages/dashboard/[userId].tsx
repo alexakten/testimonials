@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "../../config/firebaseConfig";
+import Logo from "../../public/src/logo";
 
 type Review = {
   userId: string;
@@ -18,13 +19,7 @@ export default function AdminPage() {
 
   const [currentView, setCurrentView] = useState("dashboard");
 
-  const createReviewForm = () => {
-    const userId = "yourUserId"; // Replace this with the actual userId
-    const reviewPageUrl = `/review/${userId}`; // Generating a unique URL with the userId
-
-    // You might want to save this URL to your database, or perform other actions
-  };
-
+ 
   const getBaseUrl = () => {
     if (window.location.hostname === "localhost") {
       return "http://localhost:3003";
@@ -81,7 +76,11 @@ export default function AdminPage() {
 
   return (
     <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
-      <div className="flex fixed top-0 left-0 flex-col justify-between h-screen border px-4 py-24 w-80 border-zinc-300">
+      <nav className="fixed top-0 left-0 p-6">
+        <Logo></Logo>
+      </nav>
+
+      <div className="flex w-96 flex-col justify-between h-screen border px-4 py-24 border-zinc-300">
         <div className="flex flex-col gap-2">
           <button
             type="button"
@@ -90,7 +89,7 @@ export default function AdminPage() {
               currentView === "dashboard" ? "bg-zinc-100 text-purple" : ""
             } hover:bg-zinc-100 hover:text-purple`}
           >
-            Test
+            Dashboard
           </button>
           <button
             type="button"
@@ -122,85 +121,88 @@ export default function AdminPage() {
         </button>
       </div>
 
-      <div className="w-full h-full flex overflow-y-auto p-8 ml-80">
-      {currentView === "dashboard" && (
-        <div className="flex items-center justify-center text-black">
-          Dashboard View
-        </div>
-      )}
+      <div className="w-full h-full flex overflow-y-auto p-8">
+        {currentView === "dashboard" && (
+          <div className="flex items-center justify-center text-black">
+            Dashboard View
+          </div>
+        )}
 
-      {currentView === "responses" && (
-        <div className="w-full text-black p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {loading && <p>Loading...</p>}{" "}
-          {/* Display a loading message while fetching data */}
-          {!loading && reviews.length === 0 && (
-            <p>No reviews available.</p>
-          )}{" "}
-          {/* Message for no reviews */}
-          {!loading &&
-            reviews.map((review, index) => (
-              <div
-                key={index}
-                className="flex p-8 rounded-md bg-zinc-100 justify-between items-start flex-col gap-4"
-              >
-                {review.videoUrl && review.videoUrl !== "null" ? ( // Check if a valid video URL is available
-                  <video
-                    src={review.videoUrl}
-                    controls
-                    className="w-full rounded-lg object-cover"
-                  ></video>
-                ) : (
-                  <div className="w-full bg-purple-500 rounded-lg">
-                    <p>No Video Available</p>{" "}
-                    {/* Message when no video is available */}
+        {currentView === "responses" && (
+          <div className="h-full w-full">
+            <div className="w-full text-black p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {loading && <p>Loading...</p>}{" "}
+              {/* Display a loading message while fetching data */}
+              {!loading && reviews.length === 0 && (
+                <p>No reviews available.</p>
+              )}{" "}
+              {/* Message for no reviews */}
+              {!loading &&
+                reviews.map((review, index) => (
+                  <div
+                    key={index}
+                    className="flex p-8 rounded-md bg-zinc-100 justify-between items-start flex-col gap-4"
+                  >
+                    {review.videoUrl && review.videoUrl !== "null" ? ( // Check if a valid video URL is available
+                      <video
+                        src={review.videoUrl}
+                        controls
+                        className="w-full rounded-lg object-cover"
+                      ></video>
+                    ) : (
+                      <div className="w-full bg-purple-500 rounded-lg">
+                        <p>No Video Available</p>{" "}
+                        {/* Message when no video is available */}
+                      </div>
+                    )}
+                    <div className="flex flex-col gap-2">
+                      <p className="font-semibold text-xl text-black">
+                        {review.name || "Anonymous"}{" "}
+                        {/* Default to "Anonymous" if no name is available */}
+                      </p>
+                      <div className="flex flex-row gap-2">
+                        {renderStars(review.stars || 0)}{" "}
+                        {/* Ensure a number is always passed */}
+                      </div>
+                      <div>
+                        <p className="text-zinc-500">
+                          &quot;{review.review || "No review text available."}
+                          &quot;
+                        </p>
+                        {/* Default text when no review text is available */}
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div className="flex flex-col gap-2">
-                <p className="font-semibold text-xl text-black">
-                  {review.name || "Anonymous"}{" "}
-                  {/* Default to "Anonymous" if no name is available */}
-                </p>
-                <div className="flex flex-row gap-2">
-                  {renderStars(review.stars || 0)}{" "}
-                  {/* Ensure a number is always passed */}
-                </div>
-                <div>
-                  <p className="text-zinc-500">
-                    &quot;{review.review || "No review text available."}&quot;
-                  </p>
-                  {/* Default text when no review text is available */}
-                </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      )}
-
-      {currentView === "forms" && (
-        <div className="w-full h-full flex flex-col gap- 8 items-center justify-center text-black space-y-4">
-          <p className="text-2xl font-medium text-black">
-            Share this link with your customers:
-          </p>
-
-          {userId && (
-            <div className="flex items-center space-x-2">
-              <input
-                type="text"
-                aria-label="form"
-                readOnly
-                value={`http://localhost:3000/form/${userId}`} // Assuming that your form page is hosted on this URL and port
-                className="border p-2 rounded w-80"
-              />
+                ))}
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
 
-      {currentView === "settings" && (
-        <div className="w-full h-full flex items-center justify-center text-black">
-          Settings View
-        </div>
-      )}
+        {currentView === "forms" && (
+          <div className="w-full h-full flex flex-col items-center justify-center text-black space-y-4">
+            <p className="text-2xl font-medium text-black">
+              Share this link with your customers:
+            </p>
+
+            {userId && (
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  aria-label="form"
+                  readOnly
+                  value={`http://localhost:3000/form/${userId}`} // Assuming that your form page is hosted on this URL and port
+                  className="border p-2 rounded w-80"
+                />
+              </div>
+            )}
+          </div>
+        )}
+
+        {currentView === "settings" && (
+          <div className="w-full h-full flex items-center justify-center text-black">
+            Settings View
+          </div>
+        )}
       </div>
     </main>
   );
