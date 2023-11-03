@@ -171,7 +171,10 @@ export default function AdminPage() {
               )}
             </div>
 
-            {/* 2. Number of Reviews */}
+            {/* 2. Blank div */}
+            <div className="rounded-md bg-zinc-100 p-8"></div>
+
+            {/* 3. Number of Reviews */}
             <div className="rounded-md bg-zinc-100 p-8">
               <p className="font-semibold text-xl text-black mb-4">
                 Number of Reviews
@@ -214,8 +217,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* 4. Blank div */}
-            <div className="rounded-md bg-zinc-100 p-8"></div>
+            
           </div>
         )}
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Logo from "./../public/src/logo";
 
 export default function LandingPage() {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("sv");
 
   const [email, setEmail] = useState("");
 
@@ -101,7 +101,8 @@ export default function LandingPage() {
           </div>
           <div className="flex flex-col xs:flex-row gap-4 items-center">
             <input
-              type="text"
+              type="email"
+              required
               className="px-4 h-12 w-80 border text-black outline-none border-zinc-200 focus:border-purple rounded-full"
               placeholder="Email"
               ref={emailRef}
@@ -122,7 +123,7 @@ export default function LandingPage() {
                   ? "Submitted!"
                   : "Failed."
                 : buttonText === "Join waitlist"
-                ? "Gå med"
+                ? "Ställ dig i kö"
                 : buttonText === "Submitting"
                 ? "Skickar"
                 : buttonText === "Submitted!"
