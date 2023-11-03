@@ -5,7 +5,7 @@ import Head from "next/head";
 const Plus_Jakarta_Sans = PlusJakartaSansFromNext({ subsets: ["latin"] });
 
 const metadata = {
-  title: "Testimonials",
+  title: "Video Testimonials | kindred.so",
   description: "Samla och publicera kundrecensioner i videoformat.",
 };
 

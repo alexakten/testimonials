@@ -18,7 +18,7 @@ const Logo = () => {
         />
       </svg>
       <div className="font-medium text-2xl text-black">
-        <p className="tracking-wide">
+        <p className="tracking-tight">
           kindred<span className="text-purple">feel</span>
         </p>
       </div>
