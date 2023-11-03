@@ -20,7 +20,6 @@ export default function AdminPage() {
 
   const [currentView, setCurrentView] = useState("dashboard");
 
- 
   const getBaseUrl = () => {
     if (window.location.hostname === "localhost") {
       return "http://localhost:3003";
@@ -77,7 +76,7 @@ export default function AdminPage() {
 
   return (
     <main className="flex flex-row justify-center items-start bg-zinc-50 w-screen h-screen">
-       <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
         <Link href="/">
           <Logo></Logo>
         </Link>
@@ -134,8 +133,88 @@ export default function AdminPage() {
 
       <div className="w-full h-full flex overflow-y-auto p-8">
         {currentView === "dashboard" && (
-          <div className="flex items-center justify-center text-black">
-            Dashboard View
+          <div className="h-full w-full grid grid-cols-2 gap-8">
+            {/* 1. Latest Review */}
+            <div className="rounded-md bg-zinc-100 p-8">
+              <p className="font-semibold text-xl text-black mb-4">
+                Latest Review
+              </p>
+              {!loading && reviews.length > 0 ? (
+                <div className="flex flex-col gap-4">
+                  {reviews[0].videoUrl && reviews[0].videoUrl !== "null" ? (
+                    <video
+                      src={reviews[0].videoUrl}
+                      controls
+                      className="w-full rounded-lg object-cover"
+                    ></video>
+                  ) : (
+                    <div className="w-full bg-purple-500 rounded-lg">
+                      <p>No Video Available</p>
+                    </div>
+                  )}
+                  <p className="font-semibold text-xl text-black">
+                    {reviews[0].name || "Anonymous"}
+                  </p>
+                  <div className="flex flex-row gap-2">
+                    {renderStars(reviews[0].stars || 0)}
+                  </div>
+                  <p className="text-zinc-500">
+                    &quot;{reviews[0].review || "No review text available."}
+                    &quot;
+                  </p>
+                </div>
+              ) : (
+                <p>No reviews available.</p>
+              )}
+            </div>
+
+            {/* 2. Number of Reviews */}
+            <div className="rounded-md bg-zinc-100 p-8">
+              <p className="font-semibold text-xl text-black mb-4">
+                Number of Reviews
+              </p>
+              <p className="text-black text-3xl">{reviews.length}</p>
+            </div>
+
+            {/* 3. Average Star Rating */}
+            <div className="rounded-md bg-zinc-100 p-8">
+              <p className="font-semibold text-xl text-black mb-4">
+                Average Star Rating
+              </p>
+              <div>
+                {reviews.length > 0 ? (
+                  <div className="flex flex-row gap-2">
+                    {renderStars(
+                      Math.round(
+                        reviews.reduce(
+                          (acc, review) => acc + (review.stars || 0),
+                          0
+                        ) /
+                          reviews.length +
+                          0.49
+                      ),
+                      "40" // desired size; adjust as necessary
+                    )}
+
+                    <p className="text-black ml-4 mt-1 text-3xl">
+                      {(
+                        reviews.reduce(
+                          (acc, review) => acc + (review.stars || 0),
+                          0
+                        ) / reviews.length
+                      ).toFixed(1)}
+                    </p>
+                  </div>
+                ) : (
+                  <p>No reviews available</p>
+                )}
+              </div>
+            </div>
+
+            
+
+            {/* 4. Blank div */}
+            <div className="rounded-md bg-zinc-100 p-8"></div>
           </div>
         )}
 
