@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import { Plus_Jakarta_Sans as PlusJakartaSansFromNext } from "next/font/google";
 import Head from "next/head";
 
