@@ -37,7 +37,7 @@ export default function LandingPage() {
 
   return (
     <main className="flex px-4 items-center justify-center bg-zinc-50">
-      <nav className="flex w-full z-100 justify-start fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-start items-center fixed px-4 xs:px-6 top-8">
         <Link href="/">
           <Logo></Logo>
         </Link>
