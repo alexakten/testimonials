@@ -34,7 +34,7 @@
     "src/**/*.tsx",
     "src/**/*.ts",
     ".next/types/**/*.ts"
-, "pages/dashboard.tsx", "pages/form.tsx", "pages/index.tsx", "pages/login.tsx", "pages/signup.tsx", "src/app/components/layout.tsx"  ],
+, "pages/dashboard.tsx", "pages/**/*.tsx", "pages/form.tsx", "pages/index.tsx", "pages/login.tsx", "pages/signup.tsx", "src/app/components/layout.tsx"  ],
   "exclude": [
     "node_modules"
   ]
