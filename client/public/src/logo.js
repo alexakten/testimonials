@@ -19,7 +19,7 @@ const Logo = () => {
       </svg>
       <div className="font-medium text-2xl text-black">
         <p style={{letterSpacing: -0.8}}>
-          kindred<span className="text-purple">feel</span>
+          kindred<span className="text-purple">feed</span>
         </p>
       </div>
     </div>

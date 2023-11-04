@@ -182,7 +182,7 @@ export default function AdminPage() {
               <p className="text-black text-3xl">{reviews.length}</p>
             </div>
 
-            {/* 3. Average Star Rating */}
+            {/* 4. Average Star Rating */}
             <div className="rounded-md bg-zinc-100 p-8">
               <p className="font-semibold text-xl text-black mb-4">
                 Average Star Rating
