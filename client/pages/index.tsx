@@ -23,11 +23,15 @@ export default function LandingPage() {
 
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
+
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
+   const functionURL= "http://127.0.0.1:5001/testimonials-c3d77/us-central1/submit-email"
+
+
     axios
-      .post("http://localhost:3003/submit-email", { email })
+      .post(functionURL, { email })
       .then((response) => {
         setButtonText("Submitted!"); // Update the button text state upon successful submission
       })
@@ -39,7 +43,7 @@ export default function LandingPage() {
 
   return (
     <main className="flex px-4 items-center justify-center bg-zinc-50">
-      <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-5">
         <Link href="/">
           <Logo></Logo>
         </Link>
@@ -62,9 +66,7 @@ export default function LandingPage() {
             href="/login"
             className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
           >
-            {lang === "en"
-              ? "Log in"
-              : "Logga in"}
+            {lang === "en" ? "Login" : "Logga in"}
           </Link>
         </div>
       </nav>

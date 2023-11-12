@@ -31,10 +31,13 @@ export default function LoginPage() {
 
   return (
     <main className="flex items-center justify-center bg-zinc-50 h-screen">
-      <nav className="flex w-full z-100 justify-start items-center fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-start items-center fixed px-4 xs:px-6 top-5">
         <Link href="/">
           <Logo></Logo>
         </Link>
+        <div>
+          
+        </div>
       </nav>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">

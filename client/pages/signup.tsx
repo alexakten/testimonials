@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import { useRouter } from "next/router";
 import Logo from "./../public/src/logo";
+import axios from "axios";
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -32,23 +33,38 @@ export default function SignUpPage() {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
+        alert("Passwords do not match");
+        return;
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Account created successfully");
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-      router.push('/login'); // Redirect to the login page or any other page
+        if (user) {
+            axios
+                .post("http://localhost:3003/generate-token", { uid: user.uid })
+                .then((response) => {
+                    const token = response.data.token;
+                    // Store this token somewhere on the client, e.g., localStorage, to be used with subsequent requests
+                    localStorage.setItem("token", token);
+                });
+
+            alert("Account created successfully");
+            router.push("/login"); // Redirect to the login page or any other page
+        } else {
+            throw new Error("User creation successful, but no user object received");
+        }
+
     } catch (error: any) {
-      alert(error.message); // Display error message to user
+        alert(error.message); // Display error message to user
     }
-  };
+};
+
 
   return (
     <main className="flex items-center justify-center bg-zinc-50 h-screen">
-       <nav className="flex w-full z-100 justify-start items-center fixed px-4 xs:px-6 top-8">
+      <nav className="flex w-full z-100 justify-start items-center fixed px-4 xs:px-6 top-8">
         <Link href="/">
           <Logo></Logo>
         </Link>
@@ -75,7 +91,7 @@ export default function SignUpPage() {
                 Email
               </label>
               <div className="mt-2">
-              <input
+                <input
                   id="email"
                   name="email"
                   type="email"
@@ -96,7 +112,7 @@ export default function SignUpPage() {
                 </label>
               </div>
               <div className="mt-2">
-              <input
+                <input
                   id="password"
                   name="password"
                   type="password"
