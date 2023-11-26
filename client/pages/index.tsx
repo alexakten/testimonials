@@ -4,7 +4,7 @@ import Link from "next/link";
 import Logo from "./../public/src/logo";
 
 export default function LandingPage() {
-  const [lang, setLang] = useState("sv");
+  const [lang, setLang] = useState("en");
 
   const [email, setEmail] = useState("");
 
