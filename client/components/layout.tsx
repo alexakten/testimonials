@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans as PlusJakartaSansFromNext } from "next/font/google";
 import Head from "next/head";
+import { Analytics } from '@vercel/analytics/react';
 
 const Plus_Jakarta_Sans = PlusJakartaSansFromNext({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <meta name="description" content={metadata.description} />
       </Head>
       {children}
+      <Analytics />
     </div>
   );
 }

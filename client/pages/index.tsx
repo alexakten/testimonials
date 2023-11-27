@@ -26,9 +26,7 @@ export default function LandingPage() {
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
-    const functionURL =
-      "http://localhost:4400/submit-email";
-
+    const functionURL = "http://127.0.0.1:5001/testimonials-c3d77/us-central1/api/submit-email";
     axios
       .post(functionURL, { email })
       .then((response) => {
