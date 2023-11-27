@@ -4,8 +4,8 @@ import Head from "next/head";
 const Plus_Jakarta_Sans = PlusJakartaSansFromNext({ subsets: ["latin"] });
 
 const metadata = {
-  title: "Video Testimonials | Mendly",
-  description: "Samla och publicera kundrecensioner i videoformat.",
+  title: "Mendly",
+  description: "Boost your business with social proof.",
 };
 
 export default function RootLayout({
