@@ -74,9 +74,9 @@ export default function LandingPage() {
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border px-4 py-1 rounded-full text-zinc-400 border-zinc-200">
             {lang === "en"
-              ? "Beta v1.0 launching soon. "
-              : "Beta v1.0 kommer snart. "}
-            <span className="text-purple font-medium">
+              ? "v1.0 launching soon. "
+              : "v1.0 kommer snart. "}
+            <span className="font-medium">
               <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
@@ -96,7 +96,7 @@ export default function LandingPage() {
           <div className="max-w-xl text-md xs:text-lg">
             <p>
               {lang === "en"
-                ? "Engage customers in leaving authentic and honest testimonials to be used on your website, ads, and social channels."
+                ? "Boost your conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
                 : "Engagera dina kunder i att lämna äkta och övertygande recensioner och använd dem på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
