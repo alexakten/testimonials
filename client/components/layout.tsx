@@ -4,7 +4,7 @@ import Head from "next/head";
 const Plus_Jakarta_Sans = PlusJakartaSansFromNext({ subsets: ["latin"] });
 
 const metadata = {
-  title: "Mendly",
+  title: "Social proof | Mendly",
   description: "Boost your business with social proof.",
 };
 
@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <div className={Plus_Jakarta_Sans.className}>
       <Head>
+        <link rel="icon" href="/favicon.ico" />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </Head>
