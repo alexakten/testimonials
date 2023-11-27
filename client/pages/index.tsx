@@ -91,7 +91,7 @@ export default function LandingPage() {
             </span>
           </div>
           <h1
-            className="text-4xl xs:text-6xl font-semibold"
+            className="text-3xl xs:text-6xl font-semibold"
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
