@@ -42,7 +42,7 @@ export default function LandingPage() {
     setButtonText("Testing..."); // Update the button text state
 
     // URL pointing to your test.js serverless function
-    const testFunctionURL = "https://testimonials-pgjr8604j-alexakten.vercel.app/api/test";
+    const testFunctionURL = "https://testimonials-alexakten.vercel.app/api/test";
 
     axios.get(testFunctionURL)
       .then(response => {
