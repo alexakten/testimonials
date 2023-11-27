@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <div className={Plus_Jakarta_Sans.className}>
       <Head>
-        <link rel="icon" href="/favicon.png"/>
+        <link rel="icon" href="/favicon.ico"/>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </Head>
