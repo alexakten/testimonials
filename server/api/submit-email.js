@@ -1,6 +1,22 @@
 const MongoClient = require("mongodb").MongoClient;
+const cors = require('cors');
+
+// CORS middleware
+const runMiddleware = (req, res, fn) => {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+};
 
 module.exports = async (req, res) => {
+    // Run CORS middleware and handle any potential errors
+    await runMiddleware(req, res, cors({ origin: true }));
+
     // Only handle POST requests
     if (req.method !== 'POST') {
         res.status(405).send('Method Not Allowed');
