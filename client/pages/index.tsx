@@ -14,18 +14,6 @@ export default function LandingPage() {
     setEmail(e.target.value); // Update the email state variable when the input changes
   };
 
-  const handleTestButtonClick = () => {
-    const testFunctionURL = "https:/testimonials-alexakten.vercel.app/api/test";
-    axios
-      .get(testFunctionURL)
-      .then((response) => {
-        console.log("Response from backend:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching response:", error);
-      });
-  };
-
   const handleJoinWaitlistClick = () => {
     if (emailRef.current) {
       // Check if emailRef.current is not null
@@ -35,20 +23,38 @@ export default function LandingPage() {
 
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
-  const handleButtonClick = () => {
-    setButtonText("Submitting"); // Update the button text state
+  // const handleButtonClick = () => {
+  //   setButtonText("Submitting"); // Update the button text state
 
-    const functionURL =
-      "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
-    axios
-      .post(functionURL, { email })
-      .then((response) => {
-        setButtonText("Submitted!"); // Update the button text state upon successful submission
+  //   const functionURL =
+  //     "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
+  //   axios
+  //     .post(functionURL, { email })
+  //     .then((response) => {
+  //       setButtonText("Submitted!"); // Update the button text state upon successful submission
+  //     })
+  //     .catch((error) => {
+  //       setButtonText("Failed to submit."); // Update the button text state upon failure
+  //     });
+  // };
+
+  const handleButtonClick = () => {
+    setButtonText("Testing..."); // Update the button text state
+
+    // URL pointing to your test.js serverless function
+    const testFunctionURL = "https://testimonials-pgjr8604j-alexakten.vercel.app/api/test";
+
+    axios.get(testFunctionURL)
+      .then(response => {
+        console.log("Response from backend:", response.data); // Log the response from the server
+        setButtonText("Test Successful!"); // Update the button text state upon successful response
       })
-      .catch((error) => {
-        setButtonText("Failed to submit."); // Update the button text state upon failure
+      .catch(error => {
+        console.error("Error:", error); // Log any errors
+        setButtonText("Test Failed."); // Update the button text state upon failure
       });
-  };
+};
+
 
   return (
     <main
@@ -131,8 +137,7 @@ export default function LandingPage() {
             <button
               type="button"
               className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
-              // onClick={handleButtonClick}
-              onClick={handleTestButtonClick}
+              onClick={handleButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
