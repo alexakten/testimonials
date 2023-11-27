@@ -15,7 +15,7 @@ export default function LandingPage() {
   };
 
   const handleTestButtonClick = () => {
-    const testFunctionURL = "https://www.mendly.app/api/submit-email";
+    const testFunctionURL = "https://www.mendly.app/api/test";
     axios
       .get(testFunctionURL)
       .then((response) => {
