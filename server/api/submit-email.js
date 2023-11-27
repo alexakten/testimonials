@@ -1,41 +1,54 @@
         const MongoClient = require("mongodb").MongoClient;
 
         module.exports = async (req, res) => {
-            // Manually set CORS headers
-            res.setHeader('Access-Control-Allow-Origin', 'https://www.mendly.app');
-            res.setHeader('Access-Control-Allow-Methods', 'POST');
-            res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          res.setHeader('Access-Control-Allow-Origin', 'https://www.mendly.app');
+          res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      
+          if (req.method === 'OPTIONS') {
+              res.status(200).end();
+              return;
+          }
+      
+          res.status(200).json({ message: "Simple test response" });
+      };
+
+        // module.exports = async (req, res) => {
+        //     // Manually set CORS headers
+        //     res.setHeader('Access-Control-Allow-Origin', 'https://www.mendly.app');
+        //     res.setHeader('Access-Control-Allow-Methods', 'POST');
+        //     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         
-            // Handle preflight request for CORS
-            if (req.method === 'OPTIONS') {
-                res.status(200).end();
-                return;
-            }
+        //     // Handle preflight request for CORS
+        //     if (req.method === 'OPTIONS') {
+        //         res.status(200).end();
+        //         return;
+        //     }
         
-            // Only handle POST requests
-            if (req.method !== 'POST') {
-                res.status(405).send('Method Not Allowed');
-                return;
-            }
+        //     // Only handle POST requests
+        //     if (req.method !== 'POST') {
+        //         res.status(405).send('Method Not Allowed');
+        //         return;
+        //     }
         
-            // Database URI
-            const uri = "mongodb+srv://alexakten:PyTQwSFdp0ILsN1x@cluster0.lhqgzw0.mongodb.net/?retryWrites=true&w=majority";
+        //     // Database URI
+        //     const uri = "mongodb+srv://alexakten:PyTQwSFdp0ILsN1x@cluster0.lhqgzw0.mongodb.net/?retryWrites=true&w=majority";
         
-            try {
-                const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-                await client.connect();
+        //     try {
+        //         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        //         await client.connect();
                 
-                const db = client.db("your-database-name");
-                const emailsCollection = db.collection("emails");
+        //         const db = client.db("your-database-name");
+        //         const emailsCollection = db.collection("emails");
         
-                const result = await emailsCollection.insertOne(req.body);
-                res.status(200).json({ message: "Email submitted successfully", id: result.insertedId });
+        //         const result = await emailsCollection.insertOne(req.body);
+        //         res.status(200).json({ message: "Email submitted successfully", id: result.insertedId });
         
-                await client.close();
-            } catch (error) {
-                console.error("Database connection failed", error);
-                res.status(500).json({ error: "An error occurred while submitting the email" });
-            }
-        };
+        //         await client.close();
+        //     } catch (error) {
+        //         console.error("Database connection failed", error);
+        //         res.status(500).json({ error: "An error occurred while submitting the email" });
+        //     }
+        // };
         
     
