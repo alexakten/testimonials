@@ -23,12 +23,11 @@ export default function LandingPage() {
 
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
-
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
-   const functionURL= "http://127.0.0.1:5001/testimonials-c3d77/us-central1/submit-email"
-
+    const functionURL =
+      "http://127.0.0.1:5001/testimonials-c3d77/us-central1/submit-email";
 
     axios
       .post(functionURL, { email })
@@ -42,7 +41,18 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="flex px-4 items-center justify-center bg-zinc-50">
+    <main
+      className="flex px-4 items-center justify-center bg-zinc-50"
+      style={{
+        backgroundSize: '96px 96px',
+        backgroundImage: `
+          linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+          url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.3'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='white'/%3E%3C/svg%3E")
+    `,
+        backgroundPosition: 'center center',
+      }}
+    >
       <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-5">
         <Link href="/">
           <Logo></Logo>
@@ -62,21 +72,19 @@ export default function LandingPage() {
           >
             En
           </button>
-          <Link
+          {/* <Link
             href="/login"
-            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-12"
+            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-10"
           >
             {lang === "en" ? "Login" : "Logga in"}
-          </Link>
+          </Link> */}
         </div>
       </nav>
       <div className="flex items-center justify-center w-screen h-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
-          <div className="border px-4 py-1 rounded-full text-zinc-400 border-zinc-200">
-            {lang === "en"
-              ? "v1.0 launching soon. "
-              : "v1.0 kommer snart. "}
-            <span className="font-medium">
+          <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
+            {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
+            <span className="text-black font-medium">
               <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
@@ -89,22 +97,22 @@ export default function LandingPage() {
             {lang === "en"
               ? "Fastest way to collect & publish "
               : "Samla och publicera kund-recensioner i "}
-            <span className="text-purple">
+            <span className="text-black">
               {lang === "en" ? "video testimonials." : "videoformat."}
             </span>
           </h1>
-          <div className="max-w-xl text-md xs:text-lg">
+          <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
                 ? "Boost your conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
-                : "Engagera dina kunder i att lämna äkta och övertygande recensioner och använd dem på din hemsida, i annonser, och sociala kanaler."}
+                : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
           <div className="flex flex-col xs:flex-row gap-4 items-center">
             <input
               type="email"
               required
-              className="px-4 h-12 w-80 border text-black outline-none border-zinc-200 focus:border-purple rounded-full"
+              className="px-4 h-12 w-80 border text-black outline-none border-zinc-300 focus:border-indigo-500 rounded-full"
               placeholder="Email"
               ref={emailRef}
               value={email}
@@ -112,7 +120,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="flex items-center justify-center z-10 rounded-full text-white font-medium bg-purple px-4 h-12"
+              className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
               onClick={handleButtonClick}
             >
               {lang === "en"
@@ -135,5 +143,5 @@ export default function LandingPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }
