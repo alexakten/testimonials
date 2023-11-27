@@ -33,7 +33,7 @@ export default function LandingPage() {
         setButtonText("Submitted!"); // Update the button text state upon successful submission
       })
       .catch((error) => {
-        setButtonText("Failed to submit. Try again."); // Update the button text state upon failure
+        setButtonText("Failed to submit."); // Update the button text state upon failure
       });
   };
 
