@@ -15,7 +15,7 @@ export default function LandingPage() {
   };
 
   const handleTestButtonClick = () => {
-    const testFunctionURL = "https://www.mendly.app/api/test";
+    const testFunctionURL = "https://testimonials-4oqpoyvf5-alexakten.vercel.app/api/test";
 
     axios
       .get(testFunctionURL)
@@ -96,8 +96,7 @@ export default function LandingPage() {
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="text-indigo-500 font-medium">
-              {/* <button onClick={handleJoinWaitlistClick}> */}
-              <button onClick={handleTestButtonClick}>
+              <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
             </span>
@@ -133,7 +132,8 @@ export default function LandingPage() {
             <button
               type="button"
               className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
-              onClick={handleButtonClick}
+              // onClick={handleButtonClick}
+              onClick={handleTestButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
