@@ -95,16 +95,16 @@ export default function LandingPage() {
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
-              ? "Fastest way to collect & publish "
+              ? "Fastest way to boost your business with "
               : "Samla och publicera kund-recensioner i "}
             <span className="text-black">
-              {lang === "en" ? "video testimonials." : "videoformat."}
+              {lang === "en" ? "social proof" : "videoformat."}
             </span>
           </h1>
           <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
-                ? "Boost your conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
+                ? "Increase conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
