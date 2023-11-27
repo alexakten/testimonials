@@ -1,7 +1,14 @@
+const Cors = require('cors');
 const MongoClient = require("mongodb").MongoClient;
-const cors = require('cors');
 
-// CORS middleware
+// Initializing the cors middleware
+const cors = Cors({
+  methods: ['POST'], // Adjust the methods as per your requirements
+  origin: 'https://www.mendly.app', // Adjust the origin or set to true to allow all origins
+});
+
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error if something goes wrong
 const runMiddleware = (req, res, fn) => {
   return new Promise((resolve, reject) => {
     fn(req, res, (result) => {
