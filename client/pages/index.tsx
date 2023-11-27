@@ -14,6 +14,20 @@ export default function LandingPage() {
     setEmail(e.target.value); // Update the email state variable when the input changes
   };
 
+  const handleTestButtonClick = () => {
+    const testFunctionURL =
+      "https://your-vercel-project-url.vercel.app/api/test";
+
+    axios
+      .get(testFunctionURL)
+      .then((response) => {
+        console.log("Response from backend:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching response:", error);
+      });
+  };
+
   const handleJoinWaitlistClick = () => {
     if (emailRef.current) {
       // Check if emailRef.current is not null
@@ -26,7 +40,8 @@ export default function LandingPage() {
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
-    const functionURL = "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
+    const functionURL =
+      "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
     axios
       .post(functionURL, { email })
       .then((response) => {
@@ -41,13 +56,13 @@ export default function LandingPage() {
     <main
       className="flex px-4 items-center justify-center bg-zinc-50"
       style={{
-        backgroundSize: '96px 96px',
+        backgroundSize: "96px 96px",
         backgroundImage: `
           linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
           url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.3'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='white'/%3E%3C/svg%3E")
     `,
-        backgroundPosition: 'center center',
+        backgroundPosition: "center center",
       }}
     >
       <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-5">
@@ -82,7 +97,8 @@ export default function LandingPage() {
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="text-indigo-500 font-medium">
-              <button onClick={handleJoinWaitlistClick}>
+              {/* <button onClick={handleJoinWaitlistClick}> */}
+              <button onClick={handleTestButtonClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
             </span>
