@@ -26,7 +26,7 @@ export default function LandingPage() {
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
-    const functionURL = "testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
+    const functionURL = "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
     axios
       .post(functionURL, { email })
       .then((response) => {
