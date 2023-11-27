@@ -27,7 +27,7 @@ export default function LandingPage() {
     setButtonText("Submitting"); // Update the button text state
 
     const functionURL =
-      "http://127.0.0.1:5001/testimonials-c3d77/us-central1/submit-email";
+      "http://localhost:4400/submit-email";
 
     axios
       .post(functionURL, { email })
@@ -36,7 +36,6 @@ export default function LandingPage() {
       })
       .catch((error) => {
         setButtonText("Failed to submit. Try again."); // Update the button text state upon failure
-        console.error("There was an error submitting the email!", error);
       });
   };
 
@@ -46,8 +45,8 @@ export default function LandingPage() {
       style={{
         backgroundSize: '96px 96px',
         backgroundImage: `
-          linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+          linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
           url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.3'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='white'/%3E%3C/svg%3E")
     `,
         backgroundPosition: 'center center',
@@ -84,7 +83,7 @@ export default function LandingPage() {
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
-            <span className="text-black font-medium">
+            <span className="text-indigo-500 font-medium">
               <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>

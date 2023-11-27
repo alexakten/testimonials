@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-const uri = functions.config().mongo.uri;
+const uri = "mongodb+srv://alexakten:PyTQwSFdp0ILsN1x@cluster0.lhqgzw0.mongodb.net/?retryWrites=true&w=majority";
 let db;
 
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -19,23 +19,6 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     db = client.db("your-database-name");
   })
   .catch((error) => console.error(error));
-
-app.post("/generate-token", async (req, res) => {
-  const { uid } = req.body;
-
-  const token = jwt.sign({ uid }, functions.config().jwt.secret, {
-    expiresIn: "1h",
-  });
-
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "strict",
-    maxAge: 3600000,
-  });
-
-  res.json({ token });
-});
 
 app.post("/submit-review", (req, res) => {
   const reviewsCollection = db.collection("reviews");
