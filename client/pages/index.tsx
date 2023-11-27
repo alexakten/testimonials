@@ -15,7 +15,7 @@ export default function LandingPage() {
   };
 
   const handleTestButtonClick = () => {
-    const testFunctionURL = "https://www.mendly.app/api/test";
+    const testFunctionURL = "https:/testimonials-alexakten.vercel.app/api/test";
     axios
       .get(testFunctionURL)
       .then((response) => {
