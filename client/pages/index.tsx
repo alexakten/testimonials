@@ -15,8 +15,7 @@ export default function LandingPage() {
   };
 
   const handleTestButtonClick = () => {
-    const testFunctionURL =
-      "https://your-vercel-project-url.vercel.app/api/test";
+    const testFunctionURL = "https://www.mendly.app/api/test";
 
     axios
       .get(testFunctionURL)
