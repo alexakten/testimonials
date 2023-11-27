@@ -1,8 +1,0 @@
-{
-  "mongo": {
-    "uri": "mongodb+srv://alexakten:PyTQwSFdp0ILsN1x@cluster0.lhqgzw0.mongodb.net/?retryWrites=true&w=majority"
-  },
-  "jwt": {
-    "secret": "445184ddf3fbabf3ea2eb165e6de3f797e82b709efa10c6aac7325054447b934"
-  }
-}
