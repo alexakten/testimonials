@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "../../config/firebaseConfig";
-import Logo from "../../public/src/logo";
+import Logo from "../../public/logo";
 import Link from "next/link";
 
 type Review = {

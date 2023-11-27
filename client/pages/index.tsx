@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
-import Logo from "./../public/src/logo";
+import Logo from "../public/logo";
 
 export default function LandingPage() {
   const [lang, setLang] = useState("en");

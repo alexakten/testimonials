@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Logo from "./../public/src/logo";
+import Logo from "../public/logo";
 import axios from "axios";
 
 import { initializeApp } from "firebase/app";
