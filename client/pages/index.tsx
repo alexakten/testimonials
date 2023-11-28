@@ -27,7 +27,7 @@ export default function LandingPage() {
   const handleButtonClick = () => {
     setButtonText("Submitting"); // Update the button text state
 
-    const functionURL = "https://www.mendly.app/api/submit-email";
+    const functionURL = "https://www.testimonials-git-main-alexakten.vercel.app/api/submit-email";
     axios
       .post(functionURL, { email })
       .then((response) => {
