@@ -215,7 +215,7 @@ export default function LandingPage() {
           </div>
           <div className="max-w-md">
             <Image
-              src="/share.jpg" // Path to the image in the public folder
+              src="/share.png" // Path to the image in the public folder
               alt="Share" // Alt text for the image
               width={125} // Desired width (can be adjusted)
               height={75} // Desired height (can be adjusted)
