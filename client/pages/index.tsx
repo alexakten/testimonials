@@ -189,11 +189,11 @@ export default function LandingPage() {
           </div>
           <div className="max-w-md">
             <Image
-              src="/collect.jpg" // Path to the image in the public folder
-              alt="Collect" // Alt text for the image
-              width={125} // Desired width (can be adjusted)
-              height={75} // Desired height (can be adjusted)
-              layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
+              src="/collect.jpg" 
+              alt="Collect"
+              width={125} 
+              height={75} 
+              layout="responsive" 
             />
           </div>
         </div>
@@ -215,11 +215,11 @@ export default function LandingPage() {
           </div>
           <div className="max-w-md">
             <Image
-              src="/share.png" // Path to the image in the public folder
-              alt="Share" // Alt text for the image
-              width={125} // Desired width (can be adjusted)
-              height={75} // Desired height (can be adjusted)
-              layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
+              src="/share.png"
+              alt="Share" 
+              width={125}
+              height={75} 
+              layout="responsive"
             />
           </div>
         </div>
