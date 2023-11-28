@@ -99,7 +99,7 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      <section className="flex items-center px-4 pt-56 pb-16 justify-center w-screen">
+      <section className="flex items-center px-4 pt-24 sm:pt-56 pb-16 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
