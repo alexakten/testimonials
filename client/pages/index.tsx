@@ -174,7 +174,7 @@ export default function LandingPage() {
       </section>
 
       <section className="flex flex-row items-center align-center py-16">
-        <div className="px-4 sm:px-24 gap-32 flex flex-col lg:flex-row items-center">
+        <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
             <h1 className="font-semibold text-3xl md:text-5xl">
               Collect & publish testimonials with ease
@@ -197,7 +197,7 @@ export default function LandingPage() {
       </section>
 
       <section className="flex flex-row items-center align-center py-16">
-        <div className="px-4 sm:px-24 gap-32 flex flex-col lg:flex-row-reverse items-center">
+        <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
             <h1 className="font-semibold text-3xl md:text-5xl">
               Embed on your website and socials{" "}
