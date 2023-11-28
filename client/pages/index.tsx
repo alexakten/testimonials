@@ -212,7 +212,7 @@ export default function LandingPage() {
             </h1>
             <p className="text-md xs:text-lg">
               {lang === "en"
-                ? "Let your customers do the selling for you. Embedding your testimonials on your website once, and use our platform to control what you display."
+                ? "Let your customers do the selling for you. Embed your testimonials on your website once, and use our platform to control what you display."
                 : "Låt dina kunder sköta säljet åt dig. Embedda dina recensioner på din hemsida en gång, och använd vår platform för att kontrollera vad du visar."}
             </p>
           </div>
