@@ -2,7 +2,7 @@
 
         module.exports = async (req, res) => {
             // Manually set CORS headers
-            res.setHeader('Access-Control-Allow-Origin', 'https://www.testimonials-git-main-alexakten.vercel.app');
+            res.setHeader('Access-Control-Allow-Origin', 'https://testimonials-git-main-alexakten.vercel.app');
             res.setHeader('Access-Control-Allow-Methods', 'POST');
             res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         
