@@ -177,11 +177,14 @@ export default function LandingPage() {
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
             <h1 className="font-semibold text-3xl md:text-5xl">
-              Collect & publish testimonials with ease
+              {lang === "en"
+                ? "Collect & publish testimonials with ease"
+                : "Samla & publicera kundrecensioner enkelt"}
             </h1>
             <p className="text-md xs:text-lg">
-              Mendly supports video, text and voice testimonials so that you can
-              get great reviews for any platform.
+              {lang === "en"
+                ? "Mendly supports video, text and voice testimonials so that you can get great reviews for any platform."
+                : "Mendly stödjer video-, text- och röstrecensioner så att du kan få fantastiska recensioner till alla platformar."}
             </p>
           </div>
           <div className="max-w-md">
@@ -200,12 +203,14 @@ export default function LandingPage() {
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
             <h1 className="font-semibold text-3xl md:text-5xl">
-              Embed on your website and socials{" "}
+            {lang === "en"
+                ? "Embed on your website and socials"
+                : "Embedda på din hemsida och sociala kanaler"}
             </h1>
             <p className="text-md xs:text-lg">
-              Let your customers do the selling for you. Embedding your
-              testimonials on your website once, and use our platform to control
-              what you display.
+            {lang === "en"
+                ? "Let your customers do the selling for you. Embedding your testimonials on your website once, and use our platform to control what you display."
+                : "Låt dina kunder sköta säljet åt dig. Embedda dina recensioner på din hemsida en gång, och använd vår platform för att kontrollera vad du visar."}
             </p>
           </div>
           <div className="max-w-md">
@@ -234,7 +239,7 @@ export default function LandingPage() {
             <p>
               {lang === "en"
                 ? "Get notified when we launch. "
-                : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
+                : "Få en notis när vi lanserar."}
             </p>
           </div>
           <div className="flex flex-col xs:flex-row gap-4 items-center">
