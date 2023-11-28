@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Logo from "../public/logo";
+import Image from "next/image";
 
 export default function LandingPage() {
   const [lang, setLang] = useState("en");
@@ -42,23 +43,24 @@ export default function LandingPage() {
     setButtonText("Testing..."); // Update the button text state
 
     // URL pointing to your test.js serverless function
-    const testFunctionURL = "https://testimonials-alexakten.vercel.app/api/test";
+    const testFunctionURL =
+      "https://testimonials-alexakten.vercel.app/api/test";
 
-    axios.get(testFunctionURL)
-      .then(response => {
+    axios
+      .get(testFunctionURL)
+      .then((response) => {
         console.log("Response from backend:", response.data); // Log the response from the server
         setButtonText("Test Successful!"); // Update the button text state upon successful response
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error); // Log any errors
         setButtonText("Test Failed."); // Update the button text state upon failure
       });
-};
-
+  };
 
   return (
     <main
-      className="flex px-4 items-center justify-center bg-zinc-50"
+      className="flex flex-col px-4 items-center justify-center bg-zinc-50"
       style={{
         backgroundSize: "96px 96px",
         backgroundImage: `
@@ -96,7 +98,7 @@ export default function LandingPage() {
           </Link> */}
         </div>
       </nav>
-      <div className="flex items-center justify-center w-screen h-screen">
+      <section className="flex items-center pt-56 pb-16 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
@@ -157,7 +159,112 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
-      </div>
+      </section>
+      <section className="px-24 py-16">
+        <Image
+          className="border border-black rounded-3xl"
+          src="/dashboard.jpg" // Path to the image in the public folder
+          alt="Dashboard" // Alt text for the image
+          width={500} // Desired width (can be adjusted)
+          height={300} // Desired height (can be adjusted)
+          layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
+        />
+      </section>
+      <section className="flex flex-row items-center align-center py-16">
+        <div className="px-24 gap-32 flex flex-row items-center">
+          <div className="flex flex-col max-w-lg gap-6 text-black">
+            <h1 className="font-semibold text-5xl">
+              Collect & publish testimonials with ease
+            </h1>
+            <p className="text-md xs:text-lg">
+              Mendly supports video, text and voice testimonials so that you can
+              get great reviews for any platform.
+            </p>
+          </div>
+          <div className="max-w-md">
+            <Image
+              src="/collect.jpg" // Path to the image in the public folder
+              alt="Collect" // Alt text for the image
+              width={125} // Desired width (can be adjusted)
+              height={75} // Desired height (can be adjusted)
+              layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
+            />
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-row items-center align-center py-16">
+        <div className="px-24 gap-32 flex flex-row-reverse items-center">
+          <div className="flex flex-col max-w-lg gap-6 text-black">
+            <h1 className="font-semibold text-5xl">
+              Embed on your website and socials{" "}
+            </h1>
+            <p className="text-md xs:text-lg">
+              Let your customers do the selling for you. Embedding your testimonials on your website is easy. Sharing them online is even easier.
+            </p>
+          </div>
+          <div className="max-w-md">
+            <Image
+              src="/share.jpg" // Path to the image in the public folder
+              alt="Share" // Alt text for the image
+              width={125} // Desired width (can be adjusted)
+              height={75} // Desired height (can be adjusted)
+              layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
+            />
+          </div>
+        </div>
+      </section>
+      <section className="flex items-center pt-32 pb-32 justify-center w-screen">
+        <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
+          
+          <h1
+            className="text-3xl xs:text-6xl font-semibold"
+            style={{ lineHeight: 1.1 }}
+          >
+            {lang === "en"
+              ? "Join the waitlist today."
+              : "Ställ dig i kön idag. "}
+          </h1>
+          <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
+            <p>
+              {lang === "en"
+                ? "Get notified when we launch. "
+                : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
+            </p>
+          </div>
+          <div className="flex flex-col xs:flex-row gap-4 items-center">
+            <input
+              type="email"
+              required
+              className="px-4 h-12 w-80 border text-black outline-none border-zinc-300 focus:border-indigo-500 rounded-full"
+              placeholder="Email"
+              ref={emailRef}
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <button
+              type="button"
+              className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
+              onClick={handleButtonClick}
+            >
+              {lang === "en"
+                ? buttonText === "Join waitlist"
+                  ? "Join waitlist"
+                  : buttonText === "Submitting"
+                  ? "Submitting"
+                  : buttonText === "Submitted!"
+                  ? "Submitted!"
+                  : "Failed."
+                : buttonText === "Join waitlist"
+                ? "Ställ dig i kö"
+                : buttonText === "Submitting"
+                ? "Skickar"
+                : buttonText === "Submitted!"
+                ? "Inskickad!"
+                : "Misslyckades."}
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
