@@ -162,7 +162,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="px-24 py-16">
+      <section className="px-4 sm:px-24 py-16">
         <Image
           className="border border-black rounded-3xl"
           src="/dashboard.jpg" // Path to the image in the public folder
