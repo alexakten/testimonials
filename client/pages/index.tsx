@@ -159,6 +159,9 @@ export default function LandingPage() {
                 : "Misslyckades."}
             </button>
           </div>
+          <p className="text-zinc-400">
+            {lang === "en" ? "It's so easy! 🧡" : "Det är så enkelt! 🧡"}
+          </p>
         </div>
       </section>
 
@@ -189,11 +192,11 @@ export default function LandingPage() {
           </div>
           <div className="max-w-md">
             <Image
-              src="/collect.jpg" 
+              src="/collect.jpg"
               alt="Collect"
-              width={125} 
-              height={75} 
-              layout="responsive" 
+              width={125}
+              height={75}
+              layout="responsive"
             />
           </div>
         </div>
@@ -203,12 +206,12 @@ export default function LandingPage() {
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
             <h1 className="font-semibold text-3xl md:text-5xl">
-            {lang === "en"
+              {lang === "en"
                 ? "Embed on your website and socials"
                 : "Embedda på din hemsida och sociala kanaler"}
             </h1>
             <p className="text-md xs:text-lg">
-            {lang === "en"
+              {lang === "en"
                 ? "Let your customers do the selling for you. Embedding your testimonials on your website once, and use our platform to control what you display."
                 : "Låt dina kunder sköta säljet åt dig. Embedda dina recensioner på din hemsida en gång, och använd vår platform för att kontrollera vad du visar."}
             </p>
@@ -216,9 +219,9 @@ export default function LandingPage() {
           <div className="max-w-md">
             <Image
               src="/share.png"
-              alt="Share" 
+              alt="Share"
               width={125}
-              height={75} 
+              height={75}
               layout="responsive"
             />
           </div>
