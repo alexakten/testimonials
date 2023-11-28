@@ -24,39 +24,21 @@ export default function LandingPage() {
 
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
-  // const handleButtonClick = () => {
-  //   setButtonText("Submitting"); // Update the button text state
-
-  //   const functionURL =
-  //     "https://testimonials-pgjr8604j-alexakten.vercel.app/api/submit-email";
-  //   axios
-  //     .post(functionURL, { email })
-  //     .then((response) => {
-  //       setButtonText("Submitted!"); // Update the button text state upon successful submission
-  //     })
-  //     .catch((error) => {
-  //       setButtonText("Failed to submit."); // Update the button text state upon failure
-  //     });
-  // };
-
   const handleButtonClick = () => {
-    setButtonText("Testing..."); // Update the button text state
+    setButtonText("Submitting"); // Update the button text state
 
-    // URL pointing to your test.js serverless function
-    const testFunctionURL =
-      "https://testimonials-alexakten.vercel.app/api/test";
-
+    const functionURL =
+      "https://mendly.app/api/submit-email";
     axios
-      .get(testFunctionURL)
+      .post(functionURL, { email })
       .then((response) => {
-        console.log("Response from backend:", response.data); // Log the response from the server
-        setButtonText("Test Successful!"); // Update the button text state upon successful response
+        setButtonText("Submitted!"); // Update the button text state upon successful submission
       })
       .catch((error) => {
-        console.error("Error:", error); // Log any errors
-        setButtonText("Test Failed."); // Update the button text state upon failure
+        setButtonText("Failed to submit."); // Update the button text state upon failure
       });
   };
+
 
   return (
     <main
