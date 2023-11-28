@@ -98,6 +98,7 @@ export default function LandingPage() {
           </Link> */}
         </div>
       </nav>
+
       <section className="flex items-center pt-56 pb-16 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
@@ -109,7 +110,7 @@ export default function LandingPage() {
             </span>
           </div>
           <h1
-            className="text-3xl xs:text-6xl font-semibold"
+            className="text-3xl sm:text-6xl font-semibold"
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
@@ -160,6 +161,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
       <section className="px-24 py-16">
         <Image
           className="border border-black rounded-3xl"
@@ -170,10 +172,11 @@ export default function LandingPage() {
           layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
         />
       </section>
+
       <section className="flex flex-row items-center align-center py-16">
-        <div className="px-24 gap-32 flex flex-row items-center">
+        <div className="px-4 sm:px-24 gap-32 flex flex-col lg:flex-row items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold text-5xl">
+            <h1 className="font-semibold text-3xl md:text-5xl">
               Collect & publish testimonials with ease
             </h1>
             <p className="text-md xs:text-lg">
@@ -192,14 +195,17 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
       <section className="flex flex-row items-center align-center py-16">
-        <div className="px-24 gap-32 flex flex-row-reverse items-center">
+        <div className="px-4 sm:px-24 gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold text-5xl">
+            <h1 className="font-semibold text-3xl md:text-5xl">
               Embed on your website and socials{" "}
             </h1>
             <p className="text-md xs:text-lg">
-              Let your customers do the selling for you. Embedding your testimonials on your website is easy. Sharing them online is even easier.
+              Let your customers do the selling for you. Embedding your
+              testimonials on your website once, and use our platform to control
+              what you display.
             </p>
           </div>
           <div className="max-w-md">
@@ -213,9 +219,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
       <section className="flex items-center pt-32 pb-32 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
-          
           <h1
             className="text-3xl xs:text-6xl font-semibold"
             style={{ lineHeight: 1.1 }}
@@ -237,7 +243,6 @@ export default function LandingPage() {
               required
               className="px-4 h-12 w-80 border text-black outline-none border-zinc-300 focus:border-indigo-500 rounded-full"
               placeholder="Email"
-              ref={emailRef}
               value={email}
               onChange={handleEmailChange}
             />
