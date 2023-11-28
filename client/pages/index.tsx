@@ -114,11 +114,11 @@ export default function LandingPage() {
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
-              ? "Fastest way to boost your business with "
-              : "Samla och publicera kund-recensioner i "}
-            <span className="text-black">
+              ? "Fastest way to boost your business with social proof."
+              : "Boosta ditt varumärke med text- och videorecensioner."}
+            {/* <span className="text-black">
               {lang === "en" ? "social proof." : "videoformat."}
-            </span>
+            </span> */}
           </h1>
           <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
             <p>
