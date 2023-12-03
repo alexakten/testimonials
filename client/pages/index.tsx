@@ -41,7 +41,7 @@ export default function LandingPage() {
 
   return (
     <main className="flex flex-col px-4 items-center justify-center bg-zinc-100">
-      <nav className="flex w-full z-100 justify-between items-center fixed px-4 xs:px-6 top-5">
+      <nav className="flex w-full z-1000 justify-between items-center fixed px-4 xs:px-6 top-5">
         <Link href="/">
           <Logo></Logo>
         </Link>
