@@ -90,7 +90,7 @@ export default function LandingPage() {
               {lang === "en" ? "social proof." : "videoformat."}
             </span> */}
           </h1>
-          <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
+          <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
                 ? "Increase conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
