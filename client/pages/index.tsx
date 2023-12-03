@@ -97,7 +97,7 @@ export default function LandingPage() {
             </h1>
           </div>
 
-          <div className="text-lg xs:text-xl" style={{ maxWidth: 640 }}>
+          <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
                 ? "Increase conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
@@ -158,7 +158,7 @@ export default function LandingPage() {
       <section className="flex flex-row items-center align-center py-16">
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold text-3xl md:text-5xl">
+            <h1 className="font-semibold tracking-tighter text-3xl md:text-5xl">
               {lang === "en"
                 ? "Collect & publish testimonials with ease"
                 : "Samla & publicera kundrecensioner enkelt"}
@@ -185,7 +185,7 @@ export default function LandingPage() {
       <section className="flex flex-row items-center align-center py-16">
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold text-3xl md:text-5xl">
+            <h1 className="font-semibold tracking-tighter text-3xl md:text-5xl">
               {lang === "en"
                 ? "Embed on your website and socials"
                 : "Embedda på din hemsida och sociala kanaler"}
