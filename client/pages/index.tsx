@@ -97,7 +97,7 @@ export default function LandingPage() {
             </h1>
           </div>
 
-          <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
+          <div className="text-lg xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
                 ? "Increase conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
