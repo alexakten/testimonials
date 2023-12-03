@@ -108,7 +108,7 @@ export default function LandingPage() {
             <input
               type="email"
               required
-              className="px-4 h-12 w-80 border text-black outline-none border-zinc-300 focus:border-indigo-500 rounded-full"
+              className="px-4 h-12 w-80 box-shadow border text-black outline-none border-black focus:border-black rounded-full"
               placeholder="Email"
               ref={emailRef}
               value={email}
