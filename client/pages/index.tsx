@@ -73,7 +73,7 @@ export default function LandingPage() {
         <div className="flex flex-col items-center gap-6 text-gray-900 text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
-            <span className="text-indigo-500 font-medium">
+            <span className="text-black font-medium">
               <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
@@ -81,7 +81,7 @@ export default function LandingPage() {
           </div>
           <div className="h1-container">
             <h1
-              className="text-6xl sm:text-8xl tracking-tighter font-semibold"
+              className="text-6xl sm:text-8xl tracking-tighter font-bold"
               data-text={
                 lang === "en"
                   ? "Boost your business with social proof. "
@@ -116,7 +116,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
+              className="flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-indigo-500 font-medium bg-white px-4 h-12"
               onClick={handleButtonClick}
             >
               {lang === "en"
@@ -212,12 +212,12 @@ export default function LandingPage() {
       <section className="flex items-center pt-32 pb-32 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <h1
-            className="text-3xl xs:text-6xl font-semibold"
+            className="text-3xl xs:text-6xl tracking-tight font-semibold"
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
-              ? "Join the waitlist today."
-              : "Ställ dig i kön idag. "}
+              ? "Join the waitlist today"
+              : "Ställ dig i kön idag "}
           </h1>
           <div className="text-md xs:text-lg" style={{ maxWidth: 640 }}>
             <p>
