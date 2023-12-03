@@ -82,7 +82,6 @@ export default function LandingPage() {
           <div className="h1-container">
             <h1
               className="text-5xl sm:text-8xl tracking-tighter font-semibold"
-              style={{ lineHeight: 1.1 }}
               data-text={
                 lang === "en"
                   ? "Boost your business with social proof. "
