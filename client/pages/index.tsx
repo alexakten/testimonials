@@ -137,7 +137,7 @@ export default function LandingPage() {
             </button>
           </div>
           <p className="text-zinc-400">
-            {lang === "en" ? "It's so easy! 🧡" : "Det är så enkelt! 🧡"}
+            {lang === "en" ? "It's so easy! 🌵" : "Det är så enkelt! 🧡"}
           </p>
         </div>
       </section>
