@@ -68,9 +68,9 @@ export default function LandingPage() {
           </Link> */}
         </div>
       </nav>
-
+      {/* Hero Section */}
       <section className="flex items-center px-4 pt-32 sm:pt-56 pb-16 justify-center w-screen">
-        <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
+        <div className="flex flex-col items-center gap-6 text-gray-900 text-center max-w-4xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="text-indigo-500 font-medium">
@@ -79,17 +79,25 @@ export default function LandingPage() {
               </button>
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-7xl tracking-tight font-semibold"
-            style={{ lineHeight: 1.1 }}
-          >
-            {lang === "en"
-              ? "Fastest way to boost your business with social proof."
-              : "Boosta ditt varumärke med text- och videorecensioner."}
-            {/* <span className="text-black">
-              {lang === "en" ? "social proof." : "videoformat."}
-            </span> */}
-          </h1>
+          <div className="h1-container">
+            <h1
+              className="text-3xl sm:text-8xl tracking-tighter font-semibold"
+              style={{ lineHeight: 1.1 }}
+              data-text={
+                lang === "en"
+                  ? "Boost your business with social proof. "
+                  : "Boosta ditt varumärke med text- och videorecensioner."
+              }
+            >
+              {lang === "en"
+                ? "Boost your business with "
+                : "Boosta ditt varumärke med text- och "}
+              <span className="white-shadow">
+                {lang === "en" ? "social proof." : "videorecensioner."}
+              </span>
+            </h1>
+          </div>
+
           <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
@@ -135,6 +143,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Screen Section */}
       <section className="px-4 sm:px-24 py-16">
         <Image
           className="border border-black rounded-3xl"
@@ -146,6 +155,7 @@ export default function LandingPage() {
         />
       </section>
 
+      {/* Collect Section */}
       <section className="flex flex-row items-center align-center py-16">
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
@@ -172,6 +182,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Embed Section */}
       <section className="flex flex-row items-center align-center py-16">
         <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-col max-w-lg gap-6 text-black">
@@ -198,6 +209,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Join Waitlist Section */}
       <section className="flex items-center pt-32 pb-32 justify-center w-screen">
         <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
           <h1
