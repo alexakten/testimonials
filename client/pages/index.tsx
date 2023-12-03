@@ -81,7 +81,7 @@ export default function LandingPage() {
           </div>
           <div className="h1-container">
             <h1
-              className="text-3xl sm:text-8xl tracking-tighter font-semibold"
+              className="text-6xl sm:text-8xl tracking-tighter font-semibold"
               style={{ lineHeight: 1.1 }}
               data-text={
                 lang === "en"
