@@ -44,10 +44,10 @@
   position: relative;
   z-index: 2;
   text-shadow:
-    -1px -1px 0 #111,  /* top left */
-     1px -1px 0 #111,  /* top right */
-    -1px  1px 0 #111,  /* bottom left */
-     1px  1px 0 #111,  /* bottom right */
+    -1.5px -1.5px 0 #111,  /* top left */
+     1.5px -1.5px 0 #111,  /* top right */
+    -1.5px  1.5px 0 #111,  /* bottom left */
+     1.5px  1.5px 0 #111,  /* bottom right */
      0px  4px #111;
 }
 
