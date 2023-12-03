@@ -8,6 +8,11 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+::selection {
+  background-color: #111; /* Background color of the text selection */
+  color: white; /* Text color when selected */
+}
+
 /* globals.css */
 @font-face {
   font-family: 'Satoshi';
