@@ -35,6 +35,10 @@
   opacity: 1; /* Adjust opacity for shadow */
 }
 
+.box-shadow {
+  box-shadow: 0px  4px #111;
+}
+
 .white-shadow {
   color: white;
   position: relative;

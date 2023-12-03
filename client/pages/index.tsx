@@ -116,7 +116,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-indigo-500 font-medium bg-white px-4 h-12"
+              className="box-shadow flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-indigo-500 font-medium bg-white px-4 h-12"
               onClick={handleButtonClick}
             >
               {lang === "en"
