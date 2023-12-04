@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Logo from "../public/logo";
+import Logo from "../../../public/logo";
 
 
-import { auth } from "../config/firebaseConfig";
+import { auth } from "../../../config/firebaseConfig";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

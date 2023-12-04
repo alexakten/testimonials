@@ -1,7 +1,9 @@
+"use client"
+
 import { useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
-import Logo from "../public/logo";
+import Logo from "../../public/logo";
 import Image from "next/image";
 
 export default function LandingPage() {
@@ -116,7 +118,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="box-shadow flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-indigo-500 font-medium bg-white px-4 h-12"
+              className="box-shadow flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-green-600 font-medium bg-white px-4 h-12"
               onClick={handleButtonClick}
             >
               {lang === "en"

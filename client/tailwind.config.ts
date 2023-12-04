@@ -1,11 +1,11 @@
 import type { Config } from "tailwindcss";
-import forms from '@tailwindcss/forms';
+import forms from "@tailwindcss/forms";
 
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}", // Adjusted path
   ],
   theme: {
     extend: {
@@ -18,18 +18,16 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       backgroundColor: {
-        "purple": "#6054FC",
+        purple: "#6054FC",
       },
       textColor: {
-        "purple": "#6054FC",
+        purple: "#6054FC",
       },
       borderColor: {
-        "purple": "#6054FC",
+        purple: "#6054FC",
       },
     },
   },
-  plugins: [
-    forms,
-  ],
+  plugins: [forms],
 };
 export default config;
