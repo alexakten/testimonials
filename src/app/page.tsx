@@ -141,7 +141,7 @@ export default function LandingPage() {
           </div>
           <div className="h1-container">
             <h1
-              className="text-6xl font-bold tracking-tighter sm:text-8xl"
+              className="text-4xl font-bold tracking-tighter sm:text-8xl"
               data-text={"Async video chats to " + currentTextPhrase + "|"}
             >
               Async video chats to {""}
