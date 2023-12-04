@@ -1,9 +1,9 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Logo from "../../../public/logo";
-import { storage } from "../../../config/firebaseConfig";
-import { auth } from "../../../config/firebaseConfig";
+import Logo from "../../public/logo";
+import { storage } from "../../config/firebaseConfig";
+import { auth } from "../../config/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormPage() {
