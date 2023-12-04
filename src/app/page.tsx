@@ -146,7 +146,7 @@ export default function LandingPage() {
             >
               Async video chats to {""}
               <span className="white-shadow">{currentTextPhrase}</span>
-              {/* <span className="typing-cursor">|</span> */}
+              <span className="typing-cursor">|</span>
             </h1>
           </div>
 
