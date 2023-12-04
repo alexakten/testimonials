@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Logo from "../../../public/logo";
 
@@ -11,24 +10,24 @@ import { auth } from "../../../config/firebaseConfig";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
+  // const router = useRouter();
 
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const userId = userCredential.user.uid; // Retrieve userId from user credentials
+  // const handleSubmit = async (event: any) => {
+  //   event.preventDefault();
+  //   try {
+  //     const userCredential = await signInWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password
+  //     );
+  //     const userId = userCredential.user.uid; // Retrieve userId from user credentials
 
-      router.push(`/dashboard/${userId}`); // Redirect to the dashboard page
-    } catch (error: any) {
-      alert(error.message); // Display error message to user
-    }
-  };
+  //     router.push(`/dashboard/${userId}`); // Redirect to the dashboard page
+  //   } catch (error: any) {
+  //     alert(error.message); // Display error message to user
+  //   }
+  // };
 
   return (
     <main className="flex items-center justify-center bg-zinc-50 h-screen">
@@ -52,7 +51,7 @@ export default function LoginPage() {
             className="space-y-6"
             action="#"
             method="POST"
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
           >
             <div>
               <label
