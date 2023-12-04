@@ -26,20 +26,20 @@ export default function LandingPage() {
 
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
 
-  const handleButtonClick = () => {
-    setButtonText("Submitting"); // Update the button text state
+  // const handleButtonClick = () => {
+  //   setButtonText("Submitting"); // Update the button text state
 
-    const functionURL =
-      "https://testimonials-git-main-alexakten.vercel.app/api/submit-email";
-    axios
-      .post(functionURL, { email })
-      .then((response) => {
-        setButtonText("Submitted!"); // Update the button text state upon successful submission
-      })
-      .catch((error) => {
-        setButtonText("Failed to submit."); // Update the button text state upon failure
-      });
-  };
+  //   const functionURL =
+  //     "https://testimonials-git-main-alexakten.vercel.app/api/submit-email";
+  //   axios
+  //     .post(functionURL, { email })
+  //     .then((response) => {
+  //       setButtonText("Submitted!"); // Update the button text state upon successful submission
+  //     })
+  //     .catch((error) => {
+  //       setButtonText("Failed to submit."); // Update the button text state upon failure
+  //     });
+  // };
 
   return (
     <main className="flex flex-col px-4 items-center justify-center bg-zinc-100">
@@ -119,7 +119,7 @@ export default function LandingPage() {
             <button
               type="button"
               className="box-shadow flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-green-600 font-medium bg-white px-4 h-12"
-              onClick={handleButtonClick}
+              // onClick={handleButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
@@ -240,7 +240,7 @@ export default function LandingPage() {
             <button
               type="button"
               className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
-              onClick={handleButtonClick}
+              // onClick={handleButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
