@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import Logo from "../../../public/logo";
 import axios from "axios";
 
@@ -28,7 +28,7 @@ export default function SignUpPage() {
 
   const auth = getAuth();
 
-  const router = useRouter(); // Get the navigate function
+  // const router = useRouter(); // Get the navigate function
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -52,7 +52,7 @@ export default function SignUpPage() {
                 });
 
             alert("Account created successfully");
-            router.push("/login"); // Redirect to the login page or any other page
+            // router.push("/login"); // Redirect to the login page or any other page
         } else {
             throw new Error("User creation successful, but no user object received");
         }
