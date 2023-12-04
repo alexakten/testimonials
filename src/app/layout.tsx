@@ -9,7 +9,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <>
+    <html>
       <Head>
         <title>Mendly | Social Proof</title>{" "}
         <meta
@@ -20,6 +20,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </Head>
       {children}
       <Analytics />
-    </>
+    </html>
   );
 }
