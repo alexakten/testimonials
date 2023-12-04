@@ -34,29 +34,6 @@
   50% { opacity: 0; }
 }
 
-.h1-container {
-  position: relative;
-}
-
-.h1-container h1 {
-  position: relative;
-  z-index: 2;
-}
-
-.h1-container h1::after {
-  content: attr(data-text); /* Use the same text for the shadow */
-  position: absolute;
-  top: 4px; /* Adjust for shadow offset */
-  left: 0px; /* Adjust for shadow offset */
-  z-index: -1;
-  color: #ddd; /* Shadow color */
-  opacity: 1; /* Adjust opacity for shadow */
-}
-
-.box-shadow {
-  box-shadow: 0px  4px #111;
-}
-
 .white-shadow {
   color: white;
   position: relative;
@@ -67,6 +44,14 @@
     -1.5px  1.5px 0 #111,  /* bottom left */
      1.5px  1.5px 0 #111,  /* bottom right */
      0px  4px #111;
+}
+
+.gray-shadow {
+  color: #111;
+  position: relative;
+  z-index: 2;
+  text-shadow:
+     0px  4px #ddd;
 }
 
 

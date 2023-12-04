@@ -139,14 +139,14 @@ export default function LandingPage() {
               </button>
             </span>
           </div>
-          <div className="h1-container">
+          <div className="">
             <h1
-              className="text-5xl font-bold tracking-tighter sm:text-8xl"
-              data-text={"Async video chats to " + currentTextPhrase + "|"}
+              className="gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl"
+              data-text={"Async video chats to " + currentTextPhrase}
             >
               Async video chats to {""}
               <span className="white-shadow">{currentTextPhrase}</span>
-              <span className="typing-cursor">|</span>
+              {/* <span className="typing-cursor">|</span> */}
             </h1>
           </div>
 
