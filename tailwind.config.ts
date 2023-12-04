@@ -26,6 +26,9 @@ const config: Config = {
       borderColor: {
         purple: "#6054FC",
       },
+      fontSize: {
+        '5xl': '2.625rem',
+      },
     },
   },
   plugins: [forms],

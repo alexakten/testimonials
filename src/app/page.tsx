@@ -131,7 +131,7 @@ export default function LandingPage() {
           className="flex  flex-col items-center gap-6 text-center text-gray-900"
           style={{ maxWidth: 800 }}
         >
-          <div className="rounded-full border border-zinc-300 bg-white px-4 py-1 text-zinc-400">
+          <div className="rounded-full border border-zinc-300 bg-white px-2 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="font-medium text-black">
               <button onClick={handleJoinWaitlistClick}>
@@ -139,13 +139,10 @@ export default function LandingPage() {
               </button>
             </span>
           </div>
-          <div className="">
-            <h1
-              className="gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl"
-              data-text={"Async video chats to " + currentTextPhrase}
-            >
-              Async video chats to {""}
-              <span className="white-shadow">{currentTextPhrase}</span>
+          <div>
+            <h1 className="leading-tight s:leading-loose gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
+              Async video chats <br /> to {" "}
+              <span className="black-shadow">{currentTextPhrase}</span>
               <span className="typing-cursor">|</span>
             </h1>
           </div>

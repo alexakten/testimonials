@@ -34,7 +34,7 @@
   50% { opacity: 0; }
 }
 
-.white-shadow {
+.black-shadow {
   color: white;
   position: relative;
   z-index: 2;
@@ -53,6 +53,24 @@
   text-shadow:
      0px  4px #ddd;
 }
+
+/* Media query for screens smaller than 400px */
+@media (max-width: 400px) {
+  .black-shadow {
+    text-shadow:
+    -1px -1px 0 #111,  /* top left */
+    1px -1px 0 #111,  /* top right */
+   -1px  1px 0 #111,  /* bottom left */
+    1px  1px 0 #111,  /* bottom right */
+    0px  4px #111;
+  }
+
+  .gray-shadow {
+    text-shadow:
+       0px  2px #ddd;
+  }
+}
+
 
 
 @media (prefers-color-scheme: dark) {
