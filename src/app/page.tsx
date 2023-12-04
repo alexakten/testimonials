@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useRef } from "react";
 import axios from "axios";
@@ -72,7 +72,7 @@ export default function LandingPage() {
       </nav>
       {/* Hero Section */}
       <section className="flex items-center px-4 pt-24 sm:pt-56 pb-16 justify-center w-screen">
-        <div className="flex flex-col items-center gap-6 text-gray-900 text-center max-w-4xl">
+        <div className="flex flex-col items-center gap-6 text-gray-900 text-center max-w-5xl">
           <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="text-black font-medium">
@@ -86,7 +86,7 @@ export default function LandingPage() {
               className="text-6xl sm:text-8xl tracking-tighter font-bold"
               data-text={
                 lang === "en"
-                  ? "Boost your business with social proof. "
+                  ? "Boost your business with async video chats. "
                   : "Boosta ditt varumärke med text- och videorecensioner."
               }
             >
@@ -94,7 +94,7 @@ export default function LandingPage() {
                 ? "Boost your business with "
                 : "Boosta ditt varumärke med text- och "}
               <span className="white-shadow">
-                {lang === "en" ? "social proof." : "videorecensioner."}
+                {lang === "en" ? "async video chats." : "videorecensioner."}
               </span>
             </h1>
           </div>
@@ -102,7 +102,7 @@ export default function LandingPage() {
           <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
-                ? "Increase conversion and grow your business with authentic testimonials and case studies on your website, ads, and social channels."
+                ? "Use video to ask questions & collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
