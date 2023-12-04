@@ -21,6 +21,19 @@
   font-style: normal; /* Or just 'normal' if it doesn't include italic */
 }
 
+.typing-cursor {
+  display: inline-block;
+  content: '|';
+  font-size: 1em; /* Adjust the size as needed */
+  color: black;
+  margin-left: 2px;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 .h1-container {
   position: relative;
 }

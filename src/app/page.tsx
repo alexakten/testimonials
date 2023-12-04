@@ -1,12 +1,67 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Logo from "../../public/logo";
 import Image from "next/image";
 
 export default function LandingPage() {
+  const textPhrases = [
+    "boost business.",
+    "do interviews.",
+    "collect leads.",
+    "hire employees.",
+    "get testimonials.",
+  ];
+
+  const [currentTextPhrase, setCurrentTextPhrase] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [textIndex, setTextIndex] = useState(0);
+  const typingSpeed = 65; // Adjust typing speed
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    if (isDeleting) {
+      if (currentTextPhrase === "") {
+        setIsDeleting(false);
+        setTextIndex((index) => (index + 1) % textPhrases.length);
+        timeoutId = setTimeout(() => {
+          setCurrentTextPhrase(
+            textPhrases[(textIndex + 1) % textPhrases.length].substring(0, 1),
+          );
+        }, 2000); // Wait half a second before typing new phrase
+      } else {
+        timeoutId = setTimeout(() => {
+          setCurrentTextPhrase(
+            currentTextPhrase.substring(0, currentTextPhrase.length - 1),
+          );
+        }, typingSpeed);
+      }
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [currentTextPhrase, isDeleting, textIndex, textPhrases]);
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && currentTextPhrase !== textPhrases[textIndex]) {
+      timeoutId = setTimeout(() => {
+        setCurrentTextPhrase(
+          textPhrases[textIndex].substring(0, currentTextPhrase.length + 1),
+        );
+      }, typingSpeed);
+    } else if (currentTextPhrase === textPhrases[textIndex]) {
+      timeoutId = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000); // Wait 2 seconds before starting to delete
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [currentTextPhrase, isDeleting, textIndex, textPhrases]);
+
   const [lang, setLang] = useState("en");
 
   const [email, setEmail] = useState("");
@@ -42,12 +97,12 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="flex flex-col px-4 items-center justify-center bg-zinc-100">
-      <nav className="flex w-full z-1000 justify-between items-center fixed px-4 xs:px-6 top-5">
+    <main className="flex flex-col items-center justify-center bg-zinc-100 px-4">
+      <nav className="z-1000 fixed top-5 flex w-full items-center justify-between px-4 xs:px-6">
         <Link href="/">
           <Logo></Logo>
         </Link>
-        <div className="flex flex-row text-black font-medium gap-4 ">
+        <div className="flex flex-row gap-4 font-medium text-black ">
           <button
             type="button"
             onClick={() => setLang("sv")}
@@ -71,11 +126,14 @@ export default function LandingPage() {
         </div>
       </nav>
       {/* Hero Section */}
-      <section className="flex items-center px-4 pt-24 sm:pt-56 pb-16 justify-center w-screen">
-        <div className="flex flex-col items-center gap-6 text-gray-900 text-center max-w-5xl">
-          <div className="border bg-white px-4 py-1 rounded-full text-zinc-400 border-zinc-300">
+      <section className="flex h-screen w-screen items-center justify-center px-4">
+        <div
+          className="flex  flex-col items-center gap-6 text-center text-gray-900"
+          style={{ maxWidth: 800 }}
+        >
+          <div className="rounded-full border border-zinc-300 bg-white px-4 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
-            <span className="text-black font-medium">
+            <span className="font-medium text-black">
               <button onClick={handleJoinWaitlistClick}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
@@ -83,34 +141,27 @@ export default function LandingPage() {
           </div>
           <div className="h1-container">
             <h1
-              className="text-6xl sm:text-8xl tracking-tighter font-bold"
-              data-text={
-                lang === "en"
-                  ? "Boost your business with async video chats. "
-                  : "Boosta ditt varumärke med text- och videorecensioner."
-              }
+              className="text-6xl font-bold tracking-tighter sm:text-8xl"
+              data-text={"Async video chats to " + currentTextPhrase + "|"}
             >
-              {lang === "en"
-                ? "Boost your business with "
-                : "Boosta ditt varumärke med text- och "}
-              <span className="white-shadow">
-                {lang === "en" ? "async video chats." : "videorecensioner."}
-              </span>
+              Async video chats to {""}
+              <span className="white-shadow">{currentTextPhrase}</span>
+              <span className="typing-cursor">|</span>
             </h1>
           </div>
 
           <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
-                ? "Use video to ask questions & collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
+                ? "Use video to ask questions and collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
-          <div className="flex flex-col xs:flex-row gap-4 items-center">
+          <div className="flex flex-col items-center gap-4 xs:flex-row">
             <input
               type="email"
               required
-              className="px-4 h-12 w-80 box-shadow border text-black outline-none border-black focus:border-black rounded-full"
+              className="box-shadow h-12 w-80 rounded-full border border-black px-4 text-black outline-none focus:border-black"
               placeholder="Email"
               ref={emailRef}
               value={email}
@@ -118,24 +169,24 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="box-shadow flex items-center justify-center z-10 rounded-full border border-black text-black hover:text-white hover:bg-green-600 font-medium bg-white px-4 h-12"
+              className="box-shadow z-10 flex h-12 items-center justify-center rounded-full border border-black bg-white px-4 font-medium text-black hover:bg-green-600 hover:text-white"
               onClick={handleButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
                   ? "Join waitlist"
                   : buttonText === "Submitting"
-                  ? "Submitting"
-                  : buttonText === "Submitted!"
-                  ? "Submitted!"
-                  : "Failed."
+                    ? "Submitting"
+                    : buttonText === "Submitted!"
+                      ? "Submitted!"
+                      : "Failed."
                 : buttonText === "Join waitlist"
-                ? "Ställ dig i kö"
-                : buttonText === "Submitting"
-                ? "Skickar"
-                : buttonText === "Submitted!"
-                ? "Inskickad!"
-                : "Misslyckades."}
+                  ? "Ställ dig i kö"
+                  : buttonText === "Submitting"
+                    ? "Skickar"
+                    : buttonText === "Submitted!"
+                      ? "Inskickad!"
+                      : "Misslyckades."}
             </button>
           </div>
           <p className="text-zinc-400">
@@ -145,22 +196,22 @@ export default function LandingPage() {
       </section>
 
       {/* Screen Section */}
-      <section className="px-4 sm:px-24 py-16">
+      {/* <section className="px-4 py-16 sm:px-24">
         <Image
-          className="border border-black rounded-3xl"
+          className="rounded-3xl border border-black"
           src="/dashboard.jpg" // Path to the image in the public folder
           alt="Dashboard" // Alt text for the image
           width={500} // Desired width (can be adjusted)
           height={300} // Desired height (can be adjusted)
           layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
         />
-      </section>
+      </section> */}
 
       {/* Collect Section */}
-      <section className="flex flex-row items-center align-center py-16">
-        <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row items-center">
-          <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold tracking-tighter text-3xl md:text-5xl">
+      {/* <section className="align-center flex flex-row items-center py-16">
+        <div className="flex flex-col items-center gap-16 px-4 sm:gap-32 sm:px-24 lg:flex-row">
+          <div className="flex max-w-lg flex-col gap-6 text-black">
+            <h1 className="text-3xl font-semibold tracking-tighter md:text-5xl">
               {lang === "en"
                 ? "Collect & publish testimonials with ease"
                 : "Samla & publicera kundrecensioner enkelt"}
@@ -181,13 +232,13 @@ export default function LandingPage() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Embed Section */}
-      <section className="flex flex-row items-center align-center py-16">
-        <div className="px-4 sm:px-24 gap-16 sm:gap-32 flex flex-col lg:flex-row-reverse items-center">
-          <div className="flex flex-col max-w-lg gap-6 text-black">
-            <h1 className="font-semibold tracking-tighter text-3xl md:text-5xl">
+      {/* <section className="align-center flex flex-row items-center py-16">
+        <div className="flex flex-col items-center gap-16 px-4 sm:gap-32 sm:px-24 lg:flex-row-reverse">
+          <div className="flex max-w-lg flex-col gap-6 text-black">
+            <h1 className="text-3xl font-semibold tracking-tighter md:text-5xl">
               {lang === "en"
                 ? "Embed on your website and socials"
                 : "Embedda på din hemsida och sociala kanaler"}
@@ -208,13 +259,13 @@ export default function LandingPage() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Join Waitlist Section */}
-      <section className="flex items-center pt-32 pb-32 justify-center w-screen">
-        <div className="flex flex-col items-center gap-6 text-black text-center max-w-4xl">
+      {/* <section className="flex w-screen items-center justify-center pb-32 pt-32">
+        <div className="flex max-w-4xl flex-col items-center gap-6 text-center text-black">
           <h1
-            className="text-3xl xs:text-6xl tracking-tight font-semibold"
+            className="text-3xl font-semibold tracking-tight xs:text-6xl"
             style={{ lineHeight: 1.1 }}
           >
             {lang === "en"
@@ -228,39 +279,39 @@ export default function LandingPage() {
                 : "Få en notis när vi lanserar."}
             </p>
           </div>
-          <div className="flex flex-col xs:flex-row gap-4 items-center">
+          <div className="flex flex-col items-center gap-4 xs:flex-row">
             <input
               type="email"
               required
-              className="px-4 h-12 w-80 border text-black outline-none border-zinc-300 focus:border-indigo-500 rounded-full"
+              className="h-12 w-80 rounded-full border border-zinc-300 px-4 text-black outline-none focus:border-indigo-500"
               placeholder="Email"
               value={email}
               onChange={handleEmailChange}
             />
             <button
               type="button"
-              className="flex items-center justify-center z-10 rounded-full border border-black text-white font-medium bg-indigo-500 px-4 h-12"
+              className="z-10 flex h-12 items-center justify-center rounded-full border border-black bg-indigo-500 px-4 font-medium text-white"
               onClick={handleButtonClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
                   ? "Join waitlist"
                   : buttonText === "Submitting"
-                  ? "Submitting"
-                  : buttonText === "Submitted!"
-                  ? "Submitted!"
-                  : "Failed."
+                    ? "Submitting"
+                    : buttonText === "Submitted!"
+                      ? "Submitted!"
+                      : "Failed."
                 : buttonText === "Join waitlist"
-                ? "Ställ dig i kö"
-                : buttonText === "Submitting"
-                ? "Skickar"
-                : buttonText === "Submitted!"
-                ? "Inskickad!"
-                : "Misslyckades."}
+                  ? "Ställ dig i kö"
+                  : buttonText === "Submitting"
+                    ? "Skickar"
+                    : buttonText === "Submitted!"
+                      ? "Inskickad!"
+                      : "Misslyckades."}
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
