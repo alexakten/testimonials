@@ -108,9 +108,15 @@ export default function LandingPage() {
   return (
     <main className="flex flex-col items-center justify-center bg-zinc-100 px-4">
       <nav className="z-1000 fixed top-5 flex w-full items-center justify-between px-4 xs:px-6">
-        <Link href="/">
+        {/* <Link href="/">
           <Logo></Logo>
-        </Link>
+        </Link> */}
+        <div className="flex items-end flex-row gap-2">
+          {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
+          <h1 className="gray-shadow text-4xl font-bold tracking-tight text-black">
+            mendly.
+          </h1>
+        </div>
         <div className="flex flex-row gap-4 font-medium text-black ">
           <button
             type="button"
