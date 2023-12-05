@@ -72,28 +72,42 @@ export default function LandingPage() {
     setEmail(e.target.value); // Update the email state variable when the input changes
   };
 
-  const handleJoinWaitlistClick = () => {
-    if (emailRef.current) {
-      // Check if emailRef.current is not null
-      emailRef.current.focus(); // If it’s not null, call the focus method
-    }
-  };
-
   const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [buttonError, setButtonError] = useState(false);
 
-  const handleButtonClick = () => {
-    setButtonText("Submitting"); // Update the button text state
+  const handleSubmitClick = async () => {
+    setButtonLoading(true);
+    setButtonError(false);
 
-    const functionURL =
-      "https://testimonials-git-main-alexakten.vercel.app/api/submit-email";
-    axios
-      .post(functionURL, { email })
-      .then((response) => {
-        setButtonText("Submitted!"); // Update the button text state upon successful submission
-      })
-      .catch((error) => {
-        setButtonText("Failed to submit."); // Update the button text state upon failure
+    try {
+      const response = await fetch("/api/submitEmail", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      if (!response.headers.get("content-type")?.includes("application/json")) {
+        throw new Error("Not a JSON response");
+      }
+
+      const data = await response.json();
+      console.log(data); // handle the response
+
+      setButtonText(lang === "en" ? "Submitted!" : "Inskickad!");
+    } catch (error) {
+      console.error("Error submitting email:", error);
+      setButtonError(true);
+      setButtonText(lang === "en" ? "Failed." : "Misslyckades.");
+    } finally {
+      setButtonLoading(false);
+    }
   };
 
   return (
@@ -134,14 +148,14 @@ export default function LandingPage() {
           <div className="rounded-full border border-zinc-300 bg-white px-2 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="font-medium text-black">
-              <button onClick={handleJoinWaitlistClick}>
+              <button onClick={() => emailRef.current?.focus()}>
                 {lang === "en" ? "Join waitlist →" : "Väntelista →"}
               </button>
             </span>
           </div>
           <div>
-            <h1 className="leading-tight s:leading-loose gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
-              Async video chats <br /> to {" "}
+            <h1 className="s:leading-loose gray-shadow text-5xl font-bold leading-tight tracking-tighter sm:text-8xl">
+              Async video chats <br /> to{" "}
               <span className="black-shadow">{currentTextPhrase}</span>
               <span className="typing-cursor">|</span>
             </h1>
@@ -167,23 +181,18 @@ export default function LandingPage() {
             <button
               type="button"
               className="box-shadow z-10 flex h-12 items-center justify-center rounded-full border border-black bg-white px-4 font-medium text-black hover:bg-green-600 hover:text-white"
-              onClick={handleButtonClick}
+              onClick={handleSubmitClick}
+              disabled={buttonLoading}
             >
-              {lang === "en"
-                ? buttonText === "Join waitlist"
-                  ? "Join waitlist"
-                  : buttonText === "Submitting"
-                    ? "Submitting"
-                    : buttonText === "Submitted!"
-                      ? "Submitted!"
-                      : "Failed."
-                : buttonText === "Join waitlist"
-                  ? "Ställ dig i kö"
-                  : buttonText === "Submitting"
-                    ? "Skickar"
-                    : buttonText === "Submitted!"
-                      ? "Inskickad!"
-                      : "Misslyckades."}
+              {buttonLoading
+                ? lang === "en"
+                  ? "Submitting"
+                  : "Skickar"
+                : buttonError
+                  ? buttonText
+                  : lang === "en"
+                    ? "Join waitlist"
+                    : "Ställ dig i kö"}
             </button>
           </div>
           <p className="text-zinc-400">
