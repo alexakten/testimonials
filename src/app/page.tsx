@@ -72,13 +72,13 @@ export default function LandingPage() {
     setEmail(e.target.value); // Update the email state variable when the input changes
   };
 
-  const [buttonText, setButtonText] = useState("Join waitlist"); // Create a state variable for the button text
+  const [buttonText, setButtonText] = useState(
+    lang === "en" ? "Join waitlist" : "Ställ dig i kö",
+  );
   const [buttonLoading, setButtonLoading] = useState(false);
-  const [buttonError, setButtonError] = useState(false);
 
   const handleSubmitClick = async () => {
     setButtonLoading(true);
-    setButtonError(false);
 
     try {
       const response = await fetch("/api/submitEmail", {
@@ -93,18 +93,13 @@ export default function LandingPage() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      if (!response.headers.get("content-type")?.includes("application/json")) {
-        throw new Error("Not a JSON response");
-      }
-
       const data = await response.json();
       console.log(data); // handle the response
 
       setButtonText(lang === "en" ? "Submitted!" : "Inskickad!");
     } catch (error) {
       console.error("Error submitting email:", error);
-      setButtonError(true);
-      setButtonText(lang === "en" ? "Failed." : "Misslyckades.");
+      setButtonText(lang === "en" ? "Try again" : "Försök igen");
     } finally {
       setButtonLoading(false);
     }
@@ -180,7 +175,11 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className="box-shadow z-10 flex h-12 items-center justify-center rounded-full border border-black bg-white px-4 font-medium text-black hover:bg-green-600 hover:text-white"
+              className={`box-shadow z-10 flex h-12 items-center justify-center rounded-full border border-black px-4 font-medium text-black ${
+                buttonLoading
+                  ? "cursor-not-allowed bg-gray-300 hover:bg-gray-300"
+                  : "bg-white hover:bg-green-600 hover:text-white"
+              }`}
               onClick={handleSubmitClick}
               disabled={buttonLoading}
             >
@@ -188,11 +187,7 @@ export default function LandingPage() {
                 ? lang === "en"
                   ? "Submitting"
                   : "Skickar"
-                : buttonError
-                  ? buttonText
-                  : lang === "en"
-                    ? "Join waitlist"
-                    : "Ställ dig i kö"}
+                : buttonText}
             </button>
           </div>
           <p className="text-zinc-400">
