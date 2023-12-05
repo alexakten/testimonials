@@ -104,7 +104,7 @@ export default function LandingPage() {
       setButtonLoading(false);
     }
   };
-//
+
   return (
     <main className="flex flex-col items-center justify-center bg-zinc-100 px-4">
       <nav className="z-1000 fixed top-5 flex w-full items-center justify-between px-4 xs:px-6">
