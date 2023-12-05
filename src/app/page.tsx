@@ -146,7 +146,7 @@ export default function LandingPage() {
           className="flex  flex-col items-center gap-6 text-center text-gray-900"
           style={{ maxWidth: 800 }}
         >
-          <div className="rounded-full border border-zinc-300 bg-white px-2 py-1 text-zinc-400">
+          <div className="rounded-full border border-zinc-300 bg-white px-4 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="font-medium text-black">
               <button onClick={() => emailRef.current?.focus()}>
