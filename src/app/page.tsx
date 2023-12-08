@@ -250,7 +250,7 @@ export default function LandingPage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative flex w-screen flex-col items-center justify-center gap-16 overflow-hidden bg-zinc-100 px-4 pb-40">
+      {/* <section className="relative flex w-screen flex-col items-center justify-center gap-16 overflow-hidden bg-zinc-100 px-4 pb-40">
         {/* Heading */}
         <div className="flex flex-col items-center gap-6">
           <div className="flex flex-col items-center gap-2">
@@ -317,7 +317,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      {/* </section> */} */}
 
       {/* Screen Section */}
       {/* <section className="px-4 py-16 sm:px-24">
