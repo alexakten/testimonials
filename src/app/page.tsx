@@ -250,7 +250,7 @@ export default function LandingPage() {
       </section>
 
       {/* Services Section */}
-      {/* <section className="relative flex w-screen flex-col items-center justify-center gap-16 overflow-hidden bg-zinc-100 px-4 pb-40">
+      <section className="relative flex w-screen flex-col items-center justify-center gap-16 overflow-hidden bg-zinc-100 px-4 pb-40">
         {/* Heading */}
         <div className="flex flex-col items-center gap-6">
           <div className="flex flex-col items-center gap-2">
@@ -317,10 +317,10 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      {/* </section> */} */}
+      </section>
 
       {/* Screen Section */}
-      {/* <section className="px-4 py-16 sm:px-24">
+      <section className="px-4 py-16 sm:px-24">
         <Image
           className="rounded-3xl border border-black"
           src="/dashboard.jpg" // Path to the image in the public folder
@@ -329,10 +329,10 @@ export default function LandingPage() {
           height={300} // Desired height (can be adjusted)
           layout="responsive" // This can be 'fixed', 'intrinsic', or 'responsive'
         />
-      </section> */}
+      </section>
 
       {/* Collect Section */}
-      {/* <section className="align-center flex flex-row items-center py-16">
+      <section className="align-center flex flex-row items-center py-16">
         <div className="flex flex-col items-center gap-16 px-4 sm:gap-32 sm:px-24 lg:flex-row">
           <div className="flex max-w-lg flex-col gap-6 text-black">
             <h1 className="text-3xl font-semibold tracking-tighter md:text-5xl">
@@ -356,10 +356,10 @@ export default function LandingPage() {
             />
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Embed Section */}
-      {/* <section className="align-center flex flex-row items-center py-16">
+      <section className="align-center flex flex-row items-center py-16">
         <div className="flex flex-col items-center gap-16 px-4 sm:gap-32 sm:px-24 lg:flex-row-reverse">
           <div className="flex max-w-lg flex-col gap-6 text-black">
             <h1 className="text-3xl font-semibold tracking-tighter md:text-5xl">
@@ -383,10 +383,10 @@ export default function LandingPage() {
             />
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Join Waitlist Section */}
-      {/* <section className="flex w-screen items-center justify-center pb-32 pt-32">
+      <section className="flex w-screen items-center justify-center pb-32 pt-32">
         <div className="flex max-w-4xl flex-col items-center gap-6 text-center text-black">
           <h1
             className="text-3xl font-semibold tracking-tight xs:text-6xl"
@@ -415,7 +415,7 @@ export default function LandingPage() {
             <button
               type="button"
               className="z-10 flex h-12 items-center justify-center rounded-full border border-black bg-indigo-500 px-4 font-medium text-white"
-              onClick={handleButtonClick}
+              onClick={handleSubmitClick}
             >
               {lang === "en"
                 ? buttonText === "Join waitlist"
@@ -435,7 +435,7 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }
