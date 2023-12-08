@@ -1,12 +1,59 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import ServiceCard from "./components/ServiceCard";
+import TotalPriceCard from "./components/TotalPriceCard";
 import axios from "axios";
 import Link from "next/link";
 import Logo from "../../public/logo";
 import Image from "next/image";
 
 export default function LandingPage() {
+  const serviceTitles = ["Service 1", "Service 2", "Service 3"];
+
+  // Costs for each service
+  const serviceCosts = useMemo(
+    () => ({
+      service1: 4999,
+      service2: 2999,
+      service3: 1999,
+    }),
+    [],
+  );
+
+  // Features for each service
+  const serviceFeatures = [
+    ["Feature 1.1", "Feature 1.2", "Feature 1.3"],
+    ["Feature 2.1", "Feature 2.2", "Feature 2.3"],
+    ["Feature 3.1", "Feature 3.2", "Feature 3.3"],
+  ];
+
+  // State for each service's selection status
+  const [isService1Selected, setIsService1Selected] = useState(false);
+  const [isService2Selected, setIsService2Selected] = useState(false);
+  const [isService3Selected, setIsService3Selected] = useState(false);
+
+  // Handlers to toggle the selection of each service
+  const handleService1Toggle = () => setIsService1Selected(!isService1Selected);
+  const handleService2Toggle = () => setIsService2Selected(!isService2Selected);
+  const handleService3Toggle = () => setIsService3Selected(!isService3Selected);
+
+  // Calculate the total price based on selected services
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    let total = 0;
+    if (isService1Selected) total += serviceCosts.service1;
+    if (isService2Selected) total += serviceCosts.service2;
+    if (isService3Selected) total += serviceCosts.service3;
+    setTotalPrice(total);
+  }, [
+    isService1Selected,
+    isService2Selected,
+    isService3Selected,
+    serviceCosts,
+  ]);
+
   const textPhrases = [
     "boost business.",
     "do interviews.",
@@ -107,11 +154,11 @@ export default function LandingPage() {
 
   return (
     <main className="flex flex-col items-center justify-center bg-zinc-100 px-4">
-      <nav className="z-1000 fixed top-5 flex w-full items-center justify-between px-4 xs:px-6">
+      <nav className="fixed top-0 z-10 flex w-full items-center justify-between px-4 py-4 xs:px-6">
         {/* <Link href="/">
           <Logo></Logo>
         </Link> */}
-        <div className="flex items-end flex-row gap-2">
+        <div className="flex flex-row items-end gap-2">
           {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
           <h1 className="gray-shadow text-4xl font-bold tracking-tight text-black">
             mendly.
@@ -199,6 +246,76 @@ export default function LandingPage() {
           <p className="text-zinc-400">
             {lang === "en" ? "It's so easy! 🌵" : "Det är så enkelt! 🌵"}
           </p>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="relative flex w-screen flex-col items-center justify-center gap-16 overflow-hidden bg-zinc-100 px-4 pb-40">
+        {/* Heading */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-zinc-950">Step 1</p>
+            <h2 className="gray-shadow text-4xl font-medium tracking-tight text-zinc-950 xs:text-5xl">
+              {lang === "en" ? "Select a plan" : "Välj en plan"}
+            </h2>
+          </div>
+          <p className="text-md max-w-xs text-center font-normal text-zinc-950 xs:text-lg">
+            {lang === "en"
+              ? "Create your own plan. Each month you only pay for what you need."
+              : "Välj mellan en eller två requests åt gången. Obegränsad revision, alltid."}
+          </p>
+        </div>
+        {/* Cards Container */}
+        <div className="flex w-full flex-col items-center gap-4">
+          {/* Pricing Cards Grid */}
+          <div className="grid w-full max-w-5xl gap-4 lg:grid-cols-3 lg:grid-rows-2">
+            <div className="col-span-1 row-span-1">
+              {" "}
+              <ServiceCard
+                title={serviceTitles[0]}
+                cost={serviceCosts.service1}
+                features={serviceFeatures[0]}
+                isSelected={isService1Selected}
+                onToggle={handleService1Toggle}
+                lang="en"
+              />
+            </div>
+            <div className="col-span-1 row-span-1">
+              {" "}
+              <ServiceCard
+                title={serviceTitles[1]}
+                cost={serviceCosts.service2}
+                features={serviceFeatures[1]}
+                isSelected={isService2Selected}
+                onToggle={handleService2Toggle}
+                lang="en"
+              />
+            </div>
+            <div className="col-span-1 row-span-1">
+              {" "}
+              <ServiceCard
+                title={serviceTitles[2]}
+                cost={serviceCosts.service3}
+                features={serviceFeatures[2]}
+                isSelected={isService3Selected}
+                onToggle={handleService3Toggle}
+                lang="en"
+              />
+            </div>
+            <div className="col-span-3 row-span-1">
+              <TotalPriceCard
+                serviceTitles={serviceTitles}
+                serviceCosts={serviceCosts}
+                selectedServices={[
+                  isService1Selected,
+                  isService2Selected,
+                  isService3Selected,
+                ]}
+                totalPrice={totalPrice}
+                lang="en"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
