@@ -1,12 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import ServiceCard from "./components/ServiceCard";
-import TotalPriceCard from "./components/TotalPriceCard";
-import axios from "axios";
-import Link from "next/link";
-import Logo from "../../public/logo";
-import Image from "next/image";
+import Record from "./components/RecordScreen";
 
 export default function LandingPage() {
   const serviceTitles = ["Service 1", "Service 2", "Service 3"];
@@ -248,6 +243,10 @@ export default function LandingPage() {
           </p>
         </div>
       </section>
+
+      {/* <section className="flex w-screen pb-40 items-center justify-center px-4">
+        <Record question="How did you hear about us?"/>
+      </section> */}
     </main>
   );
 }
