@@ -186,28 +186,34 @@ export default function LandingPage() {
       <section className="flex h-screen w-screen items-center justify-center px-4">
         <div
           className="flex  flex-col items-center gap-6 text-center text-gray-900"
-          style={{ maxWidth: 800 }}
+          style={{ maxWidth: 880 }}
         >
           <div className="rounded-full border border-zinc-300 bg-white px-4 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="font-medium text-black">
-              <button onClick={() => emailRef.current?.focus()}>
-                {lang === "en" ? "Join waitlist →" : "Väntelista →"}
+              <button
+                onClick={() =>
+                  (window.location.href =
+                    "https://buy.stripe.com/7sIaIo8cu7TX79SbII")
+                }
+              >
+                {lang === "en" ? "Preorders →" : "Förbeställ →"}
               </button>
             </span>
           </div>
           <div>
             <h1 className="s:leading-loose gray-shadow text-5xl font-bold leading-tight tracking-tighter sm:text-8xl">
-              Async video chats <br /> to{" "}
-              <span className="black-shadow">{currentTextPhrase}</span>
-              <span className="typing-cursor">|</span>
+              Viral content for your brand.{" "}
+              <span className="black-shadow">Every month.</span>
+              {/* <span className="black-shadow">{currentTextPhrase}</span> */}
+              {/* <span className="typing-cursor">|</span> */}
             </h1>
           </div>
 
           <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
-                ? "Use video to ask questions and collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
+                ? "Connect with creators worldwide. Getting user generated content has never been easier. One membership — unlimited content."
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
