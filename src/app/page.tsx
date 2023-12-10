@@ -50,11 +50,9 @@ export default function LandingPage() {
   ]);
 
   const textPhrases = [
-    "boost business.",
-    "do interviews.",
-    "collect leads.",
-    "hire employees.",
-    "get testimonials.",
+    "your website.",
+    "social media.",
+    "marketing.",
   ];
 
   const [currentTextPhrase, setCurrentTextPhrase] = useState("");
@@ -188,7 +186,7 @@ export default function LandingPage() {
           className="flex  flex-col items-center gap-6 text-center text-gray-900"
           style={{ maxWidth: 880 }}
         >
-          <div className="rounded-full border border-zinc-300 bg-white px-4 py-1 text-zinc-400">
+          <div className="rounded-full border border-zinc-300  px-4 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
             <span className="font-medium text-black">
               <button
@@ -203,7 +201,7 @@ export default function LandingPage() {
           </div>
           <div>
             <h1 className="s:leading-loose gray-shadow text-5xl font-bold leading-tight tracking-tighter sm:text-8xl">
-              Async video chats <br /> to{" "}
+              Video testimonials <br /> for{" "}
               <span className="black-shadow">{currentTextPhrase}</span>
               <span className="typing-cursor">|</span>
             </h1>
@@ -220,7 +218,7 @@ export default function LandingPage() {
             <input
               type="email"
               required
-              className="box-shadow h-12 w-80 rounded-full border border-black px-4 text-black outline-none focus:border-black"
+              className="box-shadow border border-black h-12 w-80 rounded-lg px-4 text-black outline-none"
               placeholder="Email"
               ref={emailRef}
               value={email}
@@ -228,10 +226,10 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className={`box-shadow z-10 flex h-12 items-center justify-center rounded-full border border-black px-4 font-medium text-black ${
+              className={`box-shadow border flex h-12 items-center justify-center rounded-lg border-black px-4 font-medium text-white ${
                 buttonLoading
-                  ? "cursor-not-allowed bg-gray-300 hover:bg-gray-300"
-                  : "bg-white hover:bg-green-600 hover:text-white"
+                  ? " bg-gray-300"
+                  : "bg-purple hover:bg-indigo-600 hover:text-white"
               }`}
               onClick={handleSubmitClick}
               disabled={buttonLoading}
