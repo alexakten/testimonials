@@ -212,7 +212,7 @@ export default function LandingPage() {
           <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
             <p>
               {lang === "en"
-                ? "Connect with creators worldwide. Getting user generated content has never been easier. One membership — unlimited content."
+                ? "Use video to ask questions and collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
