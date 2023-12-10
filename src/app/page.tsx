@@ -197,16 +197,15 @@ export default function LandingPage() {
                     "https://buy.stripe.com/7sIaIo8cu7TX79SbII")
                 }
               >
-                {lang === "en" ? "Preorders →" : "Förbeställ →"}
+                {lang === "en" ? "Reserve your spot →" : "Förbeställ →"}
               </button>
             </span>
           </div>
           <div>
             <h1 className="s:leading-loose gray-shadow text-5xl font-bold leading-tight tracking-tighter sm:text-8xl">
-              Viral content for your brand.{" "}
-              <span className="black-shadow">Every month.</span>
-              {/* <span className="black-shadow">{currentTextPhrase}</span> */}
-              {/* <span className="typing-cursor">|</span> */}
+              Async video chats <br /> to{" "}
+              <span className="black-shadow">{currentTextPhrase}</span>
+              <span className="typing-cursor">|</span>
             </h1>
           </div>
 
