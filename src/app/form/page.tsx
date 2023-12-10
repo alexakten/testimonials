@@ -2,14 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
-// import { storage } from "../../config/firebaseConfig";
-// import { auth } from "../../config/firebaseConfig";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormPage() {
   //#region
-  // const router = useRouter();
-  // const { userId } = router.query;
+ 
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [name, setName] = useState("");
@@ -63,6 +59,8 @@ export default function FormPage() {
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
+  const recordedBlobRef = useRef<Blob | null>(null);
+
   const toggleRecording = () => {
     if (isRecording) {
       mediaRecorder.current?.stop();
@@ -70,32 +68,37 @@ export default function FormPage() {
       navigator.mediaDevices
         .getUserMedia({ video: true, audio: true })
         .then((stream) => {
-          videoRef.current!.srcObject = stream;
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+
           mediaRecorder.current = new MediaRecorder(stream);
 
-          mediaRecorder.current.ondataavailable = async (event) => {
-            if (event.data.size > 0) {
-              // This assumes that each video will have a unique name
-              // It uses the current timestamp as an example.
-              const videoName = `review_${Date.now()}.webm`;
-              // const videoStorageRef = ref(storage, `videos/${videoName}`);
-
-              // Upload the recorded video to Firebase Cloud Storage
-              // await uploadBytes(videoStorageRef, event.data);
-
-              // Get the download URL and set it to videoUrl
-              // const downloadURL = await getDownloadURL(videoStorageRef);
-              // setVideoUrl(downloadURL);
-            }
+          mediaRecorder.current.ondataavailable = (event) => {
+            // Store the recorded blob in the ref
+            recordedBlobRef.current = event.data;
           };
 
-          mediaRecorder.current.onstop = () => {
-            videoRef.current!.srcObject = null;
+          mediaRecorder.current.onstop = async () => {
+            if (videoRef.current) {
+              videoRef.current.srcObject = null;
+            }
+
             stream.getTracks().forEach((track) => track.stop());
+
+            // Check if there is a recorded blob and it has size greater than 0
+            if (recordedBlobRef.current && recordedBlobRef.current.size > 0) {
+              // Create an Object URL from the blob and set it to videoUrl
+              const objectURL = URL.createObjectURL(recordedBlobRef.current);
+              setVideoUrl(objectURL);
+            }
           };
 
           mediaRecorder.current.start();
           setIsRecording(true);
+        })
+        .catch((err) => {
+          console.error("Error accessing media devices:", err);
         });
     }
   };
@@ -103,6 +106,12 @@ export default function FormPage() {
   const stopRecording = () => {
     setIsRecording(false);
     mediaRecorder.current?.stop();
+
+    if (recordedBlobRef.current) {
+      // Create a URL from the recorded blob and set it to videoUrl
+      const videoURL = URL.createObjectURL(recordedBlobRef.current);
+      setVideoUrl(videoURL);
+    }
   };
 
   const startOverRecording = () => {
@@ -172,31 +181,33 @@ export default function FormPage() {
     };
   }, [currentQuestion]);
 
-  // const handleSubmitReview = () => {
-  //   const reviewData = {
-  //     userId,
-  //     videoUrl, // assuming videoUrl is stored in a state or it’s accessible in your function
-  //     stars: selectedStar + 1, // replace with your actual star rating
-  //     name,
-  //     review,
-  //   };
+  const handleSubmitReview = () => {
+    const formData = new FormData();
 
-  //   // Sending a POST request to the server
-  //   fetch("http://localhost:3003/submit-review", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     // body: JSON.stringify(reviewData),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Success:", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
+    if (recordedBlobRef.current) {
+      formData.append(
+        "video",
+        recordedBlobRef.current,
+        `review_${Date.now()}.webm`,
+      );
+    }
+
+    formData.append("stars", String(selectedStar + 1));
+    formData.append("name", name);
+    formData.append("review", review);
+
+    fetch("/api/submit-review", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   //#endregion
 
@@ -514,7 +525,7 @@ export default function FormPage() {
                 type="button"
                 className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
                 onClick={() => {
-                  // handleSubmitReview();
+                  handleSubmitReview();
                   setCurrentQuestion(currentQuestion + 1);
                 }}
               >

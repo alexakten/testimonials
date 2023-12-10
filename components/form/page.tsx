@@ -8,7 +8,6 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormPage() {
   //#region
-  // const router = useRouter();
   // const { userId } = router.query;
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -172,31 +171,31 @@ export default function FormPage() {
     };
   }, [currentQuestion]);
 
-  // const handleSubmitReview = () => {
-  //   const reviewData = {
-  //     userId,
-  //     videoUrl, // assuming videoUrl is stored in a state or it’s accessible in your function
-  //     stars: selectedStar + 1, // replace with your actual star rating
-  //     name,
-  //     review,
-  //   };
+  const handleSubmitReview = () => {
+    const reviewData = {
+      // userId,
+      videoUrl, // assuming videoUrl is stored in a state or it’s accessible in your function
+      stars: selectedStar + 1, // replace with your actual star rating
+      name,
+      review,
+    };
 
-  //   // Sending a POST request to the server
-  //   fetch("http://localhost:3003/submit-review", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     // body: JSON.stringify(reviewData),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Success:", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
+    // Sending a POST request to the server
+    fetch("http://localhost:3003/submit-review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(reviewData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   //#endregion
 

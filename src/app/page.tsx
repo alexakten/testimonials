@@ -121,7 +121,7 @@ export default function LandingPage() {
     setButtonLoading(true);
 
     try {
-      const response = await fetch("/api/submitEmail", {
+      const response = await fetch("/api/submit-email", {
         method: "POST",
         body: JSON.stringify({ email }),
         headers: {
@@ -188,7 +188,7 @@ export default function LandingPage() {
         >
           <div className="rounded-full border border-zinc-300  px-4 py-1 text-zinc-400">
             {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
-            <span className="font-medium text-black">
+            <span className="font-medium text-purple">
               <button
                 onClick={() =>
                   (window.location.href =
@@ -200,17 +200,17 @@ export default function LandingPage() {
             </span>
           </div>
           <div>
-            <h1 className="s:leading-loose gray-shadow text-5xl font-bold leading-tight tracking-tighter sm:text-8xl">
+            <h1 className="s:leading-loose gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
               Video testimonials <br /> for{" "}
               <span className="black-shadow">{currentTextPhrase}</span>
               <span className="typing-cursor">|</span>
             </h1>
           </div>
 
-          <div className="text-md xs:text-xl" style={{ maxWidth: 640 }}>
+          <div className="text-md xs:text-xl" style={{ maxWidth: 624 }}>
             <p>
               {lang === "en"
-                ? "Use video to ask questions and collect video responses. Interviews, testimonials, lead gen — it all becomes easy with async conversation."
+                ? "Introducing the simplest way to collect & publish video testimonials. Start boosting your business with social proof today. "
                 : "Öka din konvertering och väx ditt varumärke med övertygande recensioner och case studies på din hemsida, i annonser, och sociala kanaler."}
             </p>
           </div>
