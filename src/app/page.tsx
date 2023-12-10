@@ -153,7 +153,7 @@ export default function LandingPage() {
         </Link> */}
         <div className="flex flex-row items-end gap-2">
           {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
-          <h1 className="gray-shadow text-4xl font-bold tracking-tight text-black">
+          <h1 className="gray-shadow text-2xl xs:text-4xl font-bold tracking-tight text-black">
             mendly.
           </h1>
         </div>
