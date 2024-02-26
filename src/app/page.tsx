@@ -49,11 +49,7 @@ export default function LandingPage() {
     serviceCosts,
   ]);
 
-  const textPhrases = [
-    "your website.",
-    "social media.",
-    "marketing.",
-  ];
+  const textPhrases = ["your website.", "social media.", "marketing."];
 
   const [currentTextPhrase, setCurrentTextPhrase] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -153,7 +149,7 @@ export default function LandingPage() {
         </Link> */}
         <div className="flex flex-row items-end gap-2">
           {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
-          <h1 className="gray-shadow text-2xl xs:text-4xl font-bold tracking-tight text-black">
+          <h1 className="gray-shadow text-2xl font-bold tracking-tight text-black xs:text-4xl">
             mendly.
           </h1>
         </div>
@@ -218,7 +214,7 @@ export default function LandingPage() {
             <input
               type="email"
               required
-              className="box-shadow border border-black h-12 w-80 rounded-lg px-4 text-black outline-none"
+              className="box-shadow h-12 w-80 rounded-lg border border-black px-4 text-black outline-none"
               placeholder="Email"
               ref={emailRef}
               value={email}
@@ -226,7 +222,7 @@ export default function LandingPage() {
             />
             <button
               type="button"
-              className={`box-shadow border flex h-12 items-center justify-center rounded-lg border-black px-4 font-medium text-white ${
+              className={`box-shadow flex h-12 items-center justify-center rounded-lg border border-black px-4 font-medium text-white ${
                 buttonLoading
                   ? " bg-gray-300"
                   : "bg-purple hover:bg-indigo-600 hover:text-white"
