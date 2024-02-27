@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
+import Link from "next/link";
 import Record from "./components/RecordScreen";
+import Navbar from "./components/Navbar";
 
 export default function LandingPage() {
   const serviceTitles = ["Service 1", "Service 2", "Service 3"];
@@ -143,57 +145,15 @@ export default function LandingPage() {
 
   return (
     <main className="flex flex-col items-center justify-center bg-zinc-100 px-4">
-      <nav className="fixed top-0 z-10 flex w-full items-center justify-between px-4 py-4 xs:px-6">
-        {/* <Link href="/">
-          <Logo></Logo>
-        </Link> */}
-        <div className="flex flex-row items-end gap-2">
-          {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
-          <h1 className="gray-shadow text-2xl font-bold tracking-tight text-black xs:text-4xl">
-            mendly.
-          </h1>
-        </div>
-        <div className="flex flex-row gap-4 font-medium text-black ">
-          <button
-            type="button"
-            onClick={() => setLang("sv")}
-            className={lang === "sv" ? "font-bold" : ""}
-          >
-            Sv
-          </button>
-          <button
-            type="button"
-            onClick={() => setLang("en")}
-            className={lang === "en" ? "font-bold" : ""}
-          >
-            En
-          </button>
-          {/* <Link
-            href="/login"
-            className="flex items-center justify-center z-10 bg-black text-white rounded-full px-4 h-10"
-          >
-            {lang === "en" ? "Login" : "Logga in"}
-          </Link> */}
-        </div>
-      </nav>
+      <Navbar />
       {/* Hero Section */}
       <section className="flex h-screen w-screen items-center justify-center px-4">
         <div
           className="flex  flex-col items-center gap-6 text-center text-gray-900"
           style={{ maxWidth: 880 }}
         >
-          <div className="rounded-full border border-zinc-300  px-4 py-1 text-zinc-400">
-            {lang === "en" ? "v1.0 launching soon. " : "v1.0 kommer snart. "}
-            <span className="font-medium text-purple">
-              <button
-                onClick={() =>
-                  (window.location.href =
-                    "https://buy.stripe.com/7sIaIo8cu7TX79SbII")
-                }
-              >
-                {lang === "en" ? "Reserve your spot →" : "Förbeställ →"}
-              </button>
-            </span>
+          <div className="rounded-full border border-zinc-300 bg-white  px-4 py-1 text-zinc-400">
+            v1.0 under construction <span className="text-[12px]">🚧</span>
           </div>
           <div>
             <h1 className="s:leading-loose gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
@@ -211,7 +171,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 xs:flex-row">
-            <input
+            {/* <input
               type="email"
               required
               className="box-shadow h-12 w-80 rounded-lg border border-black px-4 text-black outline-none"
@@ -219,8 +179,8 @@ export default function LandingPage() {
               ref={emailRef}
               value={email}
               onChange={handleEmailChange}
-            />
-            <button
+            /> */}
+            {/* <button
               type="button"
               className={`box-shadow flex h-12 items-center justify-center rounded-lg border border-black px-4 font-medium text-white ${
                 buttonLoading
@@ -235,7 +195,15 @@ export default function LandingPage() {
                   ? "Submitting"
                   : "Skickar"
                 : buttonText}
-            </button>
+            </button> */}
+            <Link href={"/form"}>
+              <button
+                type="button"
+                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black bg-purple px-4 font-medium text-white"
+              >
+                Try demo
+              </button>
+            </Link>
           </div>
           <p className="text-zinc-400">
             {lang === "en" ? "It's so easy! 🌵" : "Det är så enkelt! 🌵"}

@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Navbar from "../components/Navbar";
 import Link from "next/link";
-
 
 export default function FormPage() {
   //#region
- 
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [name, setName] = useState("");
@@ -213,6 +213,7 @@ export default function FormPage() {
 
   return (
     <main className="flex  h-screen w-screen flex-col items-center justify-center bg-zinc-100 px-4 xs:px-8">
+      <Navbar />
       {currentQuestion === 0 && (
         <div className="flex max-w-md flex-col items-center gap-8 text-center">
           <div className="flex flex-col items-center gap-4">
