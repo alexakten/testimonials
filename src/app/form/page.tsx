@@ -2,6 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
+import { storage } from "../../config/firebaseConfig"; // Ensure this path is correct
+import { ref as storageRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+
 
 export default function FormPage() {
   //#region
@@ -143,6 +147,41 @@ export default function FormPage() {
     });
   };
 
+  const uploadVideoToFirebase = async (blob: Blob) => {
+    // Assuming blob is your recorded video in webm format
+    // Convert blob to File with a .webm extension (not webp, since it's a video)
+    const videoFile = new File([blob], `video_${Date.now()}.webm`, {
+      type: "video/webm",
+    });
+  
+    try {
+      const storageReference = storageRef(storage, `videos/${videoFile.name}`);
+      const uploadTask = uploadBytesResumable(storageReference, videoFile);
+  
+      return new Promise((resolve, reject) => {
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            // Optional: Handle upload progress
+          },
+          (error) => {
+            console.error('Upload failed:', error);
+            reject(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log('Video available at', downloadURL);
+              resolve(downloadURL);
+            });
+          }
+        );
+      });
+    } catch (error) {
+      console.error('Error uploading video:', error);
+    }
+  };
+  
+
   useEffect(() => {
     const video = videoRef.current;
 
@@ -181,33 +220,23 @@ export default function FormPage() {
     };
   }, [currentQuestion]);
 
-  const handleSubmitReview = () => {
-    const formData = new FormData();
-
+  const handleSubmitReview = async () => {
     if (recordedBlobRef.current) {
-      formData.append(
-        "video",
-        recordedBlobRef.current,
-        `review_${Date.now()}.webm`,
-      );
+      const downloadURL = await uploadVideoToFirebase(recordedBlobRef.current);
+  
+      // Assuming `downloadURL` is the URL of the uploaded video,
+      // now send this URL along with other form data to your backend or use directly as needed.
+      const reviewData = {
+        stars: selectedStar + 1,
+        name,
+        review,
+        videoUrl: downloadURL, // This is the URL of the uploaded video
+      };
+  
+      console.log("Review data with video URL:", reviewData);
     }
-
-    formData.append("stars", String(selectedStar + 1));
-    formData.append("name", name);
-    formData.append("review", review);
-
-    fetch("/api/submit-review", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
   };
+  
 
   //#endregion
 
@@ -230,7 +259,7 @@ export default function FormPage() {
           <div className="flex flex-col items-center gap-24">
             <button
               type="button"
-              className="box-shadow flex h-14 w-56 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+              className="box-shadow flex h-14 w-56 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
               onClick={() => setCurrentQuestion(1)}
             >
               Leave testimonial
@@ -277,7 +306,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
                 Next
@@ -315,7 +344,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
                 Next
@@ -356,7 +385,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
                 Next
@@ -394,7 +423,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
                 Next
@@ -430,6 +459,7 @@ export default function FormPage() {
                 ref={videoRef}
                 autoPlay
                 playsInline
+                muted
                 className="h-full w-full scale-x-[-1] rounded-lg object-cover"
               ></video>
             )}
@@ -473,7 +503,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
               >
                 Next
@@ -524,7 +554,7 @@ export default function FormPage() {
               </button>
               <button
                 type="button"
-                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white"
+                className="box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-purple font-medium text-white hover:bg-indigo-600"
                 onClick={() => {
                   handleSubmitReview();
                   setCurrentQuestion(currentQuestion + 1);

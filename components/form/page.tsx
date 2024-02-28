@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Logo from "../../public/logo";
-import { storage } from "../../config/firebaseConfig";
-import { auth } from "../../config/firebaseConfig";
+import { storage } from "../../src/config/firebaseConfig";
+import { auth } from "../../src/config/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormPage() {

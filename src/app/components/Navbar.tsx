@@ -8,8 +8,8 @@ export default function Navbar() {
       <div className="flex flex-row items-end gap-2">
         {/* <div className="box-shadow w-8 h-8 rounded-full border-2 border-black bg-orange-600"></div> */}
         <Link href={"/"}>
-          <h1 className="gray-shadow text-2xl font-bold tracking-tighter text-black xs:text-4xl">
-            mendly.
+          <h1 className="gray-shadow text-2xl font-bold tracking-tighter text-black xs:text-3xl">
+            mendly
           </h1>
         </Link>
       </div>

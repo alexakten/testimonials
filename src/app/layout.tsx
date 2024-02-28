@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Mendly",
-  description: "Async Video Conversations",
+  description: "Video testimonials",
 };
 
 export default function RootLayout({

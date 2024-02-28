@@ -199,7 +199,7 @@ export default function LandingPage() {
             <Link href={"/form"}>
               <button
                 type="button"
-                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black bg-purple px-4 font-medium text-white"
+                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black hover:bg-black hover:text-white bg-white px-4 font-medium text-black"
               >
                 Try demo
               </button>
