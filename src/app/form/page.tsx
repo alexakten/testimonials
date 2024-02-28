@@ -2,10 +2,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
-import { storage } from "../../config/firebaseConfig"; // Ensure this path is correct
-import { ref as storageRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-
-
+import { storage, firestore } from "../../config/firebaseConfig"; // Ensure this path is correct
+import {
+  ref as storageRef,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function FormPage() {
   //#region
@@ -153,34 +156,33 @@ export default function FormPage() {
     const videoFile = new File([blob], `video_${Date.now()}.webm`, {
       type: "video/webm",
     });
-  
+
     try {
       const storageReference = storageRef(storage, `videos/${videoFile.name}`);
       const uploadTask = uploadBytesResumable(storageReference, videoFile);
-  
+
       return new Promise((resolve, reject) => {
         uploadTask.on(
-          'state_changed',
+          "state_changed",
           (snapshot) => {
             // Optional: Handle upload progress
           },
           (error) => {
-            console.error('Upload failed:', error);
+            console.error("Upload failed:", error);
             reject(error);
           },
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              console.log('Video available at', downloadURL);
+              console.log("Video available at", downloadURL);
               resolve(downloadURL);
             });
-          }
+          },
         );
       });
     } catch (error) {
-      console.error('Error uploading video:', error);
+      console.error("Error uploading video:", error);
     }
   };
-  
 
   useEffect(() => {
     const video = videoRef.current;
@@ -223,7 +225,7 @@ export default function FormPage() {
   const handleSubmitReview = async () => {
     if (recordedBlobRef.current) {
       const downloadURL = await uploadVideoToFirebase(recordedBlobRef.current);
-  
+
       // Assuming `downloadURL` is the URL of the uploaded video,
       // now send this URL along with other form data to your backend or use directly as needed.
       const reviewData = {
@@ -232,11 +234,10 @@ export default function FormPage() {
         review,
         videoUrl: downloadURL, // This is the URL of the uploaded video
       };
-  
+
       console.log("Review data with video URL:", reviewData);
     }
   };
-  
 
   //#endregion
 
@@ -446,6 +447,11 @@ export default function FormPage() {
 
       {currentQuestion === 5 && (
         <div className="flex w-full max-w-lg flex-col gap-8">
+          <p className="text-zinc-500">
+            <span className="text-zinc-800 font-bold">Questions:</span> <br />1. How did you feel before working with us?
+            <br /> 2. What did you enjoy most working with us?
+            <br /> 3. How do you feel now that we are done?
+          </p>
           <div className="h-96 w-full rounded-lg bg-purple">
             {videoUrl ? (
               <video

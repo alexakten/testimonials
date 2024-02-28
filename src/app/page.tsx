@@ -6,51 +6,6 @@ import Record from "./components/RecordScreen";
 import Navbar from "./components/Navbar";
 
 export default function LandingPage() {
-  const serviceTitles = ["Service 1", "Service 2", "Service 3"];
-
-  // Costs for each service
-  const serviceCosts = useMemo(
-    () => ({
-      service1: 4999,
-      service2: 2999,
-      service3: 1999,
-    }),
-    [],
-  );
-
-  // Features for each service
-  const serviceFeatures = [
-    ["Feature 1.1", "Feature 1.2", "Feature 1.3"],
-    ["Feature 2.1", "Feature 2.2", "Feature 2.3"],
-    ["Feature 3.1", "Feature 3.2", "Feature 3.3"],
-  ];
-
-  // State for each service's selection status
-  const [isService1Selected, setIsService1Selected] = useState(false);
-  const [isService2Selected, setIsService2Selected] = useState(false);
-  const [isService3Selected, setIsService3Selected] = useState(false);
-
-  // Handlers to toggle the selection of each service
-  const handleService1Toggle = () => setIsService1Selected(!isService1Selected);
-  const handleService2Toggle = () => setIsService2Selected(!isService2Selected);
-  const handleService3Toggle = () => setIsService3Selected(!isService3Selected);
-
-  // Calculate the total price based on selected services
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    let total = 0;
-    if (isService1Selected) total += serviceCosts.service1;
-    if (isService2Selected) total += serviceCosts.service2;
-    if (isService3Selected) total += serviceCosts.service3;
-    setTotalPrice(total);
-  }, [
-    isService1Selected,
-    isService2Selected,
-    isService3Selected,
-    serviceCosts,
-  ]);
-
   const textPhrases = ["your website.", "social media.", "marketing."];
 
   const [currentTextPhrase, setCurrentTextPhrase] = useState("");
@@ -156,7 +111,7 @@ export default function LandingPage() {
             v1.0 under construction <span className="text-[12px]">🚧</span>
           </div>
           <div>
-            <h1 className="s:leading-loose gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
+            <h1 className="gray-shadow text-5xl font-bold tracking-tighter sm:text-8xl">
               Video testimonials <br /> for{" "}
               <span className="black-shadow">{currentTextPhrase}</span>
               <span className="typing-cursor">|</span>
@@ -199,7 +154,7 @@ export default function LandingPage() {
             <Link href={"/form"}>
               <button
                 type="button"
-                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black hover:bg-black hover:text-white bg-white px-4 font-medium text-black"
+                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black bg-white px-4 font-medium text-black hover:bg-black hover:text-white"
               >
                 Try demo
               </button>
