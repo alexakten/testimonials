@@ -154,14 +154,14 @@ export default function LandingPage() {
             <Link href={"/form"}>
               <button
                 type="button"
-                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black bg-white px-4 font-medium text-black hover:bg-black hover:text-white"
+                className="box-shadow flex h-12 items-center justify-center rounded-lg border border-black bg-white px-4 font-medium text-black hover:bg-purple hover:text-white"
               >
-                Try demo
+                Try demo 🌵
               </button>
             </Link>
           </div>
           <p className="text-zinc-400">
-            {lang === "en" ? "It's so easy! 🌵" : "Det är så enkelt! 🌵"}
+            {lang === "en" ? "It's so easy! " : "Det är så enkelt! 🌵"}
           </p>
         </div>
       </section>

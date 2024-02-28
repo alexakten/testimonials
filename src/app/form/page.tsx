@@ -338,7 +338,7 @@ export default function FormPage() {
             <div className="flex flex-row items-center gap-4">
               <button
                 type="button"
-                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-zinc-400"
+                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-black"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
@@ -379,7 +379,7 @@ export default function FormPage() {
             <div className="flex flex-row items-center gap-4">
               <button
                 type="button"
-                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-zinc-400"
+                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-black"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
@@ -417,7 +417,7 @@ export default function FormPage() {
             <div className="flex flex-row items-center gap-4">
               <button
                 type="button"
-                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-zinc-400"
+                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-black"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
@@ -502,7 +502,7 @@ export default function FormPage() {
             <div className="flex flex-row items-center gap-4">
               <button
                 type="button"
-                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-zinc-400"
+                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-black"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
@@ -553,7 +553,7 @@ export default function FormPage() {
             <div className="flex flex-row items-center gap-4">
               <button
                 type="button"
-                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-zinc-400"
+                className="font-regular box-shadow flex h-14 w-36 items-center justify-center rounded-lg border border-black bg-white text-black"
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
               >
                 Previous
